@@ -5,3 +5,5 @@ Tambah disini -- nizom --
 Tambah disini -- Ivan -- 
 
 Apa yaa ?
+
+tambah lewat bash

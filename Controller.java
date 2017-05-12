@@ -1,5 +1,6 @@
 package utama;
 package tidakutama;
+package panjang;
 
 import java.net.URL;
 import java.util.ResourceBundle;

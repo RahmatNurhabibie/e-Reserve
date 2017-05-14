@@ -10,5 +10,19 @@ package model;
  * @author B.Aja
  */
 public class Pemesanan {
+    /* attributes */
+    private int id;
+    private int id_pengguna;
+    private int id_ruangan;
+    private String tgl_pemesanan; // ubah type data "date"
+    private String waktu_kegiatan; // ubah type data "date"
+    private String nama_kegiatan;
+    private boolean status;
     
+    /* constructor */
+    public Pemesanan(){
+
+    }
+    
+    /* methods */
 }

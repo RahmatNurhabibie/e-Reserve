@@ -10,5 +10,17 @@ package model;
  * @author B.Aja
  */
 public class Ruangan {
+    /* attributes */
+    private int id;
+    private String nama;
+    private int kategori;
+    private int harga;
+    private String fasilitas;
     
+    /* constructor */
+    public Ruangan(){
+
+    }
+    
+    /* methods */
 }

@@ -10,5 +10,20 @@ package model;
  * @author B.Aja
  */
 public class Pengguna {
+    /* attributes */
+    private int id;
+    private String username;
+    private String password;
+    private String nama;
+    private int jabatan;
+    private boolean is_aktif;
     
+    /* constructor */
+    public Pengguna(){
+
+    }
+    
+    /* methods */
+    
+
 }

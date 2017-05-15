@@ -6,9 +6,13 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="200" prefWidth="320" xmlns:fx="http://javafx.com/fxml/1" fx:controller="e.reserve.WelcomeController">
+<AnchorPane id="AnchorPane" prefHeight="200" prefWidth="320" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="e.reserve.WelcomeController">
     <children>
-        <Button layoutX="126" layoutY="90" text="Click Me!" onAction="#handleButtonAction" fx:id="button" />
-        <Label layoutX="126" layoutY="120" minHeight="16" minWidth="69" fx:id="label" />
+        <Button fx:id="btn1" layoutX="105.0" layoutY="14.0" onAction="#handleButtonAction" text="Booking Ruangan" />
+        <Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
+      <Button fx:id="btn2" layoutX="105.0" layoutY="48.0" onAction="#handleButtonAction" text="Cek Ruangan" />
+      <Button fx:id="btn3" layoutX="105.0" layoutY="83.0" onAction="#handleButtonAction" text="Kritik dan Saran" />
+      <Button fx:id="btn4" layoutX="105.0" layoutY="116.0" onAction="#handleButtonAction" text="Kelola Ruangan" />
+      <Button fx:id="btn5" layoutX="106.0" layoutY="149.0" onAction="#handleButtonAction" text="Kelola Users" />
     </children>
 </AnchorPane>

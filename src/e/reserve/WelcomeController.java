@@ -41,7 +41,7 @@ public class WelcomeController implements Initializable {
             root = FXMLLoader.load(getClass().getResource("/view/DetailPage.fxml"));
         } else if (event.getSource()==btn3){
             stage = (Stage) btn3.getScene().getWindow();
-            root = FXMLLoader.load(getClass().getResource("/view/KomentarList.fxml"));
+            root = FXMLLoader.load(getClass().getResource("/view/KomentarForm.fxml"));
         } else if (event.getSource()==btn4){
             stage = (Stage) btn4.getScene().getWindow();
             root = FXMLLoader.load(getClass().getResource("/view/RuanganList.fxml"));

@@ -5,6 +5,9 @@
  */
 package model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author B.Aja
@@ -18,10 +21,22 @@ public class Komentar {
     private String isi;
     private int tgl; // ubah type data "date"
 
+    //List <Komentar> komen = new ArrayList();
+    
     /* constructor */
     public Komentar(){
-
+        
     }
     
+    
     /* methods */
+   
+    public void setKomentar (String isi) {
+        this.isi = isi;
+    }
+    
+    public String getKomentar () {
+       return this.isi;
+    }
+    
 }

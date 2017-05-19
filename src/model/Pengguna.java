@@ -5,6 +5,9 @@
  */
 package model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author B.Aja
@@ -18,12 +21,20 @@ public class Pengguna {
     private int jabatan;
     private boolean is_aktif;
     
+    
+    List <Pengguna> user = new ArrayList();
+    
     /* constructor */
     public Pengguna(){
 
     }
     
     /* methods */
+    /*
+    public int getPengguna () {
+        //int ?
+    
+    */
     
 
 }

@@ -25,4 +25,14 @@ public class Pemesanan {
     }
     
     /* methods */
+    /*
+    public int getPemesanan () {
+        //tipe data returnnya.
+    }
+    
+    public boolean getStatus () {
+        //boolean ?
+    }
+    
+    */
 }

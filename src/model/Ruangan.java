@@ -5,6 +5,9 @@
  */
 package model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author B.Aja
@@ -17,9 +20,14 @@ public class Ruangan {
     private int harga;
     private String fasilitas;
     
+    
+    List <Ruangan> ruang = new ArrayList();
+    
+    
+    
     /* constructor */
-    public Ruangan(){
-
+    public Ruangan(int id,String nama,int kategori,int harga,String fasilitas){
+        
     }
     
     /* methods */

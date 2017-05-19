@@ -2,13 +2,14 @@
 
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.102" fx:controller="controller.UserController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UserController">
    <children>
-      <Label layoutX="39.0" layoutY="30.0" text="Id" />
-      <Label layoutX="113.0" layoutY="30.0" text="Nama" />
-      <Label layoutX="228.0" layoutY="30.0" text="Jabatan" />
-      <Label layoutX="388.0" layoutY="30.0" text="Aktif" />
+      <Label layoutX="44.0" layoutY="155.0" text="Id" />
+      <Label layoutX="118.0" layoutY="155.0" text="Nama" />
+      <Label layoutX="233.0" layoutY="155.0" text="Jabatan" />
+      <Label layoutX="393.0" layoutY="155.0" text="Aktif" />
+      <Pane prefHeight="65.0" prefWidth="800.0" style="-fx-background-color: #06337b;" />
    </children>
 </AnchorPane>

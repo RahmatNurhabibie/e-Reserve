@@ -15,25 +15,20 @@ import java.util.List;
 public class Komentar {
     /* attributes */
     private int id;
-    private int id_pengguna;
-    private int id_ruangan;
-    private int id_parent;
+    private Pengguna id_pengguna;
+    private Ruangan id_ruangan;
+    // private Komentar id_parent; --ga usah pake parent aja mungkin--
     private String isi;
     private int tgl; // ubah type data "date"
-
-    //List <Komentar> komen = new ArrayList();
     
     /* constructor */
-    public Komentar(){
-        
+    public Komentar(String isi, int tgl){
+        this.isi = isi;
+        this.tgl = tgl;
     }
     
     
     /* methods */
-   
-    public void setKomentar (String isi) {
-        this.isi = isi;
-    }
     
     public String getKomentar () {
        return this.isi;

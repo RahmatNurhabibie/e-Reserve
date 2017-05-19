@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package controller;
+import e.reserve.db;
+import java.util.*;
 import model.Komentar;
 
 /**
@@ -31,14 +33,14 @@ public class KomentarController {
     
     @FXML
     private void handleButtonSubmit (ActionEvent event) {
-        String sementara;
-        sementara = tfKomentar.getText();
-        Komentar komen = new Komentar();
-        
-        komen.setKomentar(sementara);
-        
-        lbNotif.setText("Pesan Terkirim !");
-       
+        String isi = tfKomentar.getText();
+        if (!isi.isEmpty()){
+            Komentar komen = new Komentar(isi, 123);
+            db.TblKomentar.add(komen);
+            lbNotif.setText("Pesan Terkirim !");    
+        } else {
+            lbNotif.setText("form komentar masih kosong!");    
+        }
     }
     
 }

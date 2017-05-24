@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="200" prefWidth="320" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="e.reserve.WelcomeController">
+<AnchorPane id="AnchorPane" prefHeight="200" prefWidth="320" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="e.reserve.WelcomeController">
     <children>
         <Button fx:id="btn1" layoutX="105.0" layoutY="14.0" onAction="#handleButtonAction" text="Booking Ruangan" />
         <Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
@@ -14,5 +12,6 @@
       <Button fx:id="btn3" layoutX="105.0" layoutY="83.0" onAction="#handleButtonAction" text="Kritik dan Saran" />
       <Button fx:id="btn4" layoutX="105.0" layoutY="116.0" onAction="#handleButtonAction" text="Kelola Ruangan" />
       <Button fx:id="btn5" layoutX="106.0" layoutY="149.0" onAction="#handleButtonAction" text="Kelola Users" />
+      <Button fx:id="btn6" layoutX="215.0" layoutY="48.0" onAction="#handleButtonAction" text="Login" />
     </children>
 </AnchorPane>

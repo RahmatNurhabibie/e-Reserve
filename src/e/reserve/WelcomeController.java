@@ -27,7 +27,7 @@ public class WelcomeController implements Initializable {
     @FXML
     private Label label;
     @FXML
-    private Button btn1, btn2, btn3, btn4, btn5;
+    private Button btn1, btn2, btn3, btn4, btn5, btn6;
     
     @FXML
     private void handleButtonAction(ActionEvent event) throws IOException {
@@ -45,6 +45,9 @@ public class WelcomeController implements Initializable {
         } else if (event.getSource()==btn4){
             stage = (Stage) btn4.getScene().getWindow();
             root = FXMLLoader.load(getClass().getResource("/view/RuanganList.fxml"));
+        } else if (event.getSource()==btn6){
+            stage = (Stage) btn6.getScene().getWindow();
+            root = FXMLLoader.load(getClass().getResource("/view/LoginPage.fxml"));
         } else {
             stage = (Stage) btn5.getScene().getWindow();
             root = FXMLLoader.load(getClass().getResource("/view/UserList.fxml"));

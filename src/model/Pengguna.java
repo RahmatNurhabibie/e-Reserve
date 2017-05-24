@@ -25,16 +25,27 @@ public class Pengguna {
     List <Pengguna> user = new ArrayList();
     
     /* constructor */
-    public Pengguna(){
-
+    public Pengguna(String username, String password){
+        this.username = username;
+        this.password = password;
     }
     
+
     /* methods */
     /*
     public int getPengguna () {
         //int ?
     
     */
+
+    public String getPassword(String pass) {
+        return password;
+    }
+
+    public String getUsername(String user) {
+        return username;
+    }
+    
     
 
 }

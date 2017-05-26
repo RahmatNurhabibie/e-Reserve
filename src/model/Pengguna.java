@@ -17,6 +17,7 @@ public class Pengguna {
     private int id;
     private String username;
     private String password;
+    private String email;
     private String nama;
     private int jabatan;
     private boolean is_aktif;
@@ -25,9 +26,12 @@ public class Pengguna {
     List <Pengguna> user = new ArrayList();
     
     /* constructor */
-    public Pengguna(String username, String password){
+    public Pengguna(String nama, String username, String email, String password){
+        this.nama = nama;
+        this.email = email;
         this.username = username;
         this.password = password;
+        this.jabatan = 1;
     }
     
 

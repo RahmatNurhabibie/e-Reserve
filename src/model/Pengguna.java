@@ -22,9 +22,6 @@ public class Pengguna {
     private int jabatan;
     private boolean is_aktif;
     
-    
-    List <Pengguna> user = new ArrayList();
-    
     /* constructor */
     public Pengguna(int id, String nama, String username, String email, String password){
         this.id = id;
@@ -36,22 +33,26 @@ public class Pengguna {
         this.is_aktif = true;
     }
     
-
     /* methods */
-    /*
-    public int getPengguna () {
-        //int ?
-    
-    */
-
+    public int getId(){
+        return this.id;
+    }
+    public String getName(){
+        return this.nama;
+    }
     public String getPassword() {
-        return password;
+        return this.password;
     }
-
     public String getUsername() {
-        return username;
+        return this.username;
     }
-    
-    
-
+    public String getEmail() {
+        return this.email;
+    }
+    public int getJabatan() {
+        return this.jabatan;
+    }
+    public String getIs_aktif() {
+        return this.is_aktif ? "True" : "False";
+    }
 }

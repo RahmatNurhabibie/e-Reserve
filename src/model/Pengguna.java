@@ -26,12 +26,14 @@ public class Pengguna {
     List <Pengguna> user = new ArrayList();
     
     /* constructor */
-    public Pengguna(String nama, String username, String email, String password){
+    public Pengguna(int id, String nama, String username, String email, String password){
+        this.id = id;
         this.nama = nama;
         this.email = email;
         this.username = username;
         this.password = password;
         this.jabatan = 1;
+        this.is_aktif = true;
     }
     
 
@@ -42,11 +44,11 @@ public class Pengguna {
     
     */
 
-    public String getPassword(String pass) {
+    public String getPassword() {
         return password;
     }
 
-    public String getUsername(String user) {
+    public String getUsername() {
         return username;
     }
     

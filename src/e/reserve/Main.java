@@ -5,6 +5,7 @@
  */
 package e.reserve;
 
+import java.io.IOException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -12,6 +13,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
+import org.xml.sax.SAXException;
 
 /**
  *
@@ -37,9 +39,11 @@ public class Main extends Application {
     }
 
     @Override
-    public void stop() throws ParserConfigurationException, TransformerException{
+    public void stop() throws ParserConfigurationException, TransformerException, SAXException, IOException{
         System.out.println("Stage is closing");
         db.saveXML();
+        System.out.println("\n");
+        db.readXML(); //masih error
     }
     
 }

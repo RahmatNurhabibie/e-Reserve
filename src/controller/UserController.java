@@ -5,10 +5,17 @@
  */
 package controller;
 
+import javafx.scene.control.Label;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.FXML;
+
 /**
  *
  * @author Sptandi
  */
 public class UserController {
+    @FXML
+    Label lbNama, lbUsername, lbEmail, lbId, lbStatus, lbJabatan;
+
     
 }

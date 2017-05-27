@@ -21,7 +21,7 @@ public class UserController implements Initializable {
     @FXML 
     Label lbId, lbName, lbUsername, lbEmail, lbJabatan, lbAktif,
           dataId, dataName, dataUsername, dataEmail, dataJabatan, dataAktif;
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         String id, name, username, email, jabatan, aktif;

@@ -31,6 +31,11 @@ public class Pengguna {
         this.is_aktif = true;
     }
     
+    //constructor untuk simpan data untuk ditampilkan
+    public Pengguna(String User, String Name, String Username, String Email) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
     /* methods */
     public int getId(){
         return this.id;

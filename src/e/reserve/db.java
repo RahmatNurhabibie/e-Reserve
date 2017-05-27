@@ -57,6 +57,14 @@ public class db {
        	// saveRuangan(); -- not ready
         System.out.println("Tulis XML Selesai");
     }
+    
+    public static void readXML() throws ParserConfigurationException, TransformerException, SAXException, IOException{
+       	readPengguna(); // on progress
+       	// savePemesanan(); -- not ready 
+       	// saveKomentar(); -- not ready
+       	// saveRuangan(); -- not ready
+        System.out.println("Read XML Selesai");
+    }
 
     private static void savePengguna() throws ParserConfigurationException, TransformerConfigurationException, TransformerException{
         DocumentBuilderFactory produsen = DocumentBuilderFactory.newInstance();
@@ -157,4 +165,59 @@ public class db {
 		// Element rootRuangan = dokumen.createElement("Ruangan");
 		// docRuangan.appendChild(rootRuangan);
   //   }
+    
+    
+    
+    //Baca XML
+    
+    
+    private static void readPengguna() throws ParserConfigurationException, SAXException, IOException {
+        String Pengguna,Name,ID,Email,Jabatan,Status,Username,User;
+        
+        //list sementara untuk meanmpilkan
+        List <Pengguna> TblPengguna = new ArrayList ();
+        
+        //persiapan baca file xml
+        File fileXML = new File("Pengguna.xml");
+        DocumentBuilderFactory produsen = DocumentBuilderFactory.newInstance();
+        DocumentBuilder pembuat = produsen.newDocumentBuilder();
+        Document docPengguna = pembuat.parse(fileXML);
+        docPengguna.getDocumentElement().normalize();
+        
+        
+        //membuat list pengguna
+        NodeList listPengguna = docPengguna.getElementsByTagName("Pengguna");
+        
+        
+        for(int i=0; i < listPengguna.getLength(); i++){
+            //Membuat node (atribut) yang akan dibaca (di contoh ada 5 node)
+            Node nodeXML = listPengguna.item(i);
+
+            //Mengambil node untuk tiap iterasi (5 node = 5 iterasi)
+            if(nodeXML.getNodeType() == Node.ELEMENT_NODE){
+                Element sementara = (Element) nodeXML;
+                
+                //Memindahkan ke variabel sementara
+                User = sementara.getAttribute("Pengguna");
+                Name = sementara.getElementsByTagName("Name").item(0).getTextContent();
+                Username = sementara.getElementsByTagName("Username").item(0).getTextContent();
+                Email = sementara.getElementsByTagName("Email").item(0).getTextContent();
+                
+                
+                //Memasukkan data yang didapat ke List sementara
+                TblPengguna.add(new Pengguna(User, Name, Username, Email));
+            }
+        }
+        
+        //menampilkan di console sementara
+        for(int i=0; i < TblPengguna.size(); i++){
+            System.out.println("ID  : " + TblPengguna.get(i).getId());
+            System.out.println("Nama : " + TblPengguna.get(i).getName());
+            System.out.println("Username  : " + TblPengguna.get(i).getUsername());
+            System.out.println("Email  : " + TblPengguna.get(i).getEmail());
+            System.out.println("Status  : " + TblPengguna.get(i).getIs_aktif());
+            System.out.println("Jabatan  : " + TblPengguna.get(i).getJabatan());
+            System.out.println();
+        }
+    }
 }

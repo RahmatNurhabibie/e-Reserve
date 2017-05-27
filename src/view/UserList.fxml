@@ -22,5 +22,5 @@
       <Label fx:id="dataEmail" layoutX="372.0" layoutY="187.0" text="16523071@students.uii.ac.id" />
       <Label fx:id="dataJabatan" layoutX="561.0" layoutY="187.0" text="Admin" />
       <Label fx:id="dataAktif" layoutX="650.0" layoutY="187.0" text="True" />
-   </children>
+    </children>
 </AnchorPane>

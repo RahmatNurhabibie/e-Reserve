@@ -46,8 +46,6 @@ public class Main extends Application {
     public void stop() throws ParserConfigurationException, TransformerException, SAXException, IOException{
         System.out.println("Stage is closing");
         db.saveXML();
-        System.out.println("\n");
-        db.readXML(); //masih error
     }
     
 }

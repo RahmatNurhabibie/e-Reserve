@@ -175,7 +175,7 @@ public class db {
         String Pengguna,Name,ID,Email,Jabatan,Status,Username,User;
         
         //list sementara untuk meanmpilkan
-        List <Pengguna> TblPengguna = new ArrayList ();
+        List <Pengguna> TblPenggunaa = new ArrayList ();
         
         //persiapan baca file xml
         File fileXML = new File("Pengguna.xml");
@@ -205,18 +205,18 @@ public class db {
                 
                 
                 //Memasukkan data yang didapat ke List sementara
-                TblPengguna.add(new Pengguna(User, Name, Username, Email));
+                TblPenggunaa.add(new Pengguna(User, Name, Username, Email));
             }
         }
         
         //menampilkan di console sementara
-        for(int i=0; i < TblPengguna.size(); i++){
-            System.out.println("ID  : " + TblPengguna.get(i).getId());
-            System.out.println("Nama : " + TblPengguna.get(i).getName());
-            System.out.println("Username  : " + TblPengguna.get(i).getUsername());
-            System.out.println("Email  : " + TblPengguna.get(i).getEmail());
-            System.out.println("Status  : " + TblPengguna.get(i).getIs_aktif());
-            System.out.println("Jabatan  : " + TblPengguna.get(i).getJabatan());
+        for(int i=0; i < TblPenggunaa.size(); i++){
+            System.out.println("ID  : " + TblPenggunaa.get(i).getId());
+            System.out.println("Nama : " + TblPenggunaa.get(i).getName());
+            System.out.println("Username  : " + TblPenggunaa.get(i).getUsername());
+            System.out.println("Email  : " + TblPenggunaa.get(i).getEmail());
+            System.out.println("Status  : " + TblPenggunaa.get(i).getIs_aktif());
+            System.out.println("Jabatan  : " + TblPenggunaa.get(i).getJabatan());
             System.out.println();
         }
     }

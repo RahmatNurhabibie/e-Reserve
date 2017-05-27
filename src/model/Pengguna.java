@@ -5,8 +5,6 @@
  */
 package model;
 
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
@@ -54,5 +52,11 @@ public class Pengguna {
     }
     public String getIs_aktif() {
         return this.is_aktif ? "True" : "False";
+    }
+    public void setJabatan(int role){
+        this.jabatan = role;
+    }
+    public void setAktif(boolean active){
+        this.is_aktif = active;
     }
 }

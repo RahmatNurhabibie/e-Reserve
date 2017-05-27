@@ -6,6 +6,7 @@
 package e.reserve;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.*;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -19,6 +20,9 @@ import javax.xml.transform.stream.StreamResult;
 import model.*;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
 
 /**
  *
@@ -36,7 +40,7 @@ public class db {
    	try {
             java.security.MessageDigest md = java.security.MessageDigest.getInstance("MD5");
 	    byte[] array = md.digest(str.getBytes());
-	    StringBuffer sb = new StringBuffer();
+	    StringBuilder sb = new StringBuilder();
 	    for (int i = 0; i < array.length; ++i) {
 	      	sb.append(Integer.toHexString((array[i] & 0xFF) | 0x100).substring(1,3));
             }
@@ -94,6 +98,45 @@ public class db {
         transformer.transform(dom, result);
     }
     
+    public static void loadPengguna() throws IOException, ParserConfigurationException, SAXException {
+        int id, jabatan;
+        String nama, username, password, email;
+        boolean is_aktif;
+        
+        File fileXML = new File("Pengguna.xml");
+        DocumentBuilderFactory produsen = DocumentBuilderFactory.newInstance();
+        DocumentBuilder pembuat = produsen.newDocumentBuilder();
+        Document dok = pembuat.parse(fileXML);
+        dok.getDocumentElement().normalize();
+        
+        //Menginisialisasi tag yang akan dibaca
+        NodeList listXML = dok.getElementsByTagName("Pengguna");
+        System.out.println(listXML.getLength());
+        for(int i=0; i < listXML.getLength(); i++){
+            //Membuat node (atribut) yang akan dibaca (di contoh ada 5 node)
+            Node nodeXML = listXML.item(i);
+            
+            //Mengambil node untuk tiap iterasi (5 node = 5 iterasi)
+            if(nodeXML.getNodeType() == Node.ELEMENT_NODE){
+                Element elemenku = (Element) nodeXML;
+                
+                //Memindahkan ke variabel sementara
+                id = Integer.parseInt(elemenku.getAttribute("id").trim());
+                nama = elemenku.getElementsByTagName("Name").item(0).getTextContent();
+                username = elemenku.getElementsByTagName("Username").item(0).getTextContent();
+                email = elemenku.getElementsByTagName("Email").item(0).getTextContent();
+                password = elemenku.getElementsByTagName("Password").item(0).getTextContent();
+                jabatan = Integer.parseInt(elemenku.getAttribute("role").trim());
+                is_aktif = Boolean.parseBoolean(elemenku.getAttribute("active"));
+                
+                //Memasukkan data yang didapat ke List
+                Pengguna tmp = new Pengguna(id, nama, username, email, password); 
+                tmp.setJabatan(jabatan); 
+                tmp.setAktif(is_aktif);
+                TblPengguna.add(tmp);
+            }
+        }
+    }
     /* ON PROGRESS */
   
   //   private void savePemesanan(){

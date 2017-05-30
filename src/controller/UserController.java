@@ -5,7 +5,7 @@
  */
 package controller;
 
-import e.reserve.db;
+import model.DBPengguna;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -21,13 +21,16 @@ public class UserController implements Initializable {
     @FXML 
     Label lbId, lbName, lbUsername, lbEmail, lbJabatan, lbAktif,
           dataId, dataName, dataUsername, dataEmail, dataJabatan, dataAktif;
-
+    
+    private DBPengguna dbpengguna = new DBPengguna();
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         String id, name, username, email, jabatan, aktif;
         id = name = username = email = jabatan = aktif = "";
         
-        for (Pengguna tmp : db.TblPengguna){
+        for (int i = 1; i <= dbpengguna.sizePengguna(); i++ ){
+            Pengguna tmp = dbpengguna.getPengguna(i);
+            
             id = id + tmp.getId() + "\n";
             name = name + tmp.getName() + "\n";
             username = username + tmp.getUsername() + "\n";

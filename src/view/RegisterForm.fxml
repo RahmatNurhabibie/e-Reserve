@@ -18,7 +18,7 @@
       <TextField fx:id="tfEmail" layoutX="309.0" layoutY="275.0" prefHeight="33.0" prefWidth="197.0" promptText="Email" />
       <PasswordField fx:id="tfPassword" layoutX="308.0" layoutY="319.0" prefHeight="33.0" prefWidth="197.0" promptText="Password" />
       <PasswordField fx:id="tfPassword2" layoutX="308.0" layoutY="364.0" prefHeight="33.0" prefWidth="197.0" promptText="Confirm Password" />
-      <Button layoutX="362.0" layoutY="461.0" mnemonicParsing="false" onAction="#registerAction" prefHeight="33.0" prefWidth="75.0" style="-fx-background-color: f7d217;" text="Register" textFill="#06337b">
+      <Button fx:id="btnRegister" defaultButton="true" layoutX="362.0" layoutY="461.0" mnemonicParsing="false" onAction="#registerAction" prefHeight="33.0" prefWidth="75.0" style="-fx-background-color: f7d217;" text="Register" textFill="#06337b">
          <font>
             <Font size="14.0" />
          </font></Button>

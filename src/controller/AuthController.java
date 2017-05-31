@@ -6,26 +6,25 @@
 package controller;
 
 import e.reserve.Main;
-import model.DBPengguna;
+import e.reserve.XMLController;
+import model.LstPengguna;
 import java.io.IOException;
 import java.net.URL;
-import java.util.NoSuchElementException;
 import java.util.ResourceBundle;
-import java.util.function.Predicate;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerException;
 import model.*;
 
 /**
@@ -44,7 +43,7 @@ public class AuthController implements Initializable {
     @FXML
     private Button btnRegister, btnToRegister, btnLogin;
     
-    private DBPengguna dbPengguna = new DBPengguna();
+    private LstPengguna dbPengguna = new LstPengguna();
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -52,31 +51,34 @@ public class AuthController implements Initializable {
     
     @FXML
     private void loginAction (ActionEvent event) throws IOException {
-        String username = tfPassword.getText(); 
-        String password = tfUsername.getText();
-        
-        if (dbPengguna.isExist(username) != null ) {
+        String username = tfUsername.getText().trim(); 
+        String password = tfPassword.getText().trim();
+        System.out.println(username);
+        if (dbPengguna.isExist(username) != null) {
             Pengguna tmp = dbPengguna.isExist(username);
             if (Main.MD5(password).equals(tmp.getPassword())) {
                 System.out.println("Success Login");
-                Main.RedirectPage(getClass(), btnLogin, "UserList");
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setTitle("Succes");
+                alert.setContentText("Welcome to e-Reserve");
+                alert.showAndWait();
+                
+                if (tmp.getJabatan() == 1) // admin
+                    Main.RedirectPage(getClass(), btnLogin, "UserList");
+                if (tmp.getJabatan() == 2) // pengelola
+                    Main.RedirectPage(getClass(), btnLogin, "PemesananList");
+                if (tmp.getJabatan() == 3) // user
+                    Main.RedirectPage(getClass(), btnLogin, "RuanganList");
             } else {
-                System.out.println("Wrong Password");
+                txPeringatan.setText("Wrong Password");
             }
         } else {
-            System.out.println("Account has not registered");
+            txPeringatan.setText("Account has not registered");
         }
     }
     @FXML
     private void toRegisterAction (ActionEvent event) throws IOException {
         Main.RedirectPage(getClass(), btnToRegister, "RegisterForm");
-//        Stage stage;
-//        Parent root;
-//        stage = (Stage) btnToRegister.getScene().getWindow();
-//        root = FXMLLoader.load(getClass().getResource("/view/RegisterForm.fxml"));
-//        Scene scene = new Scene(root);
-//        stage.setScene(scene);
-//        stage.show();
     }
     
     @FXML
@@ -104,20 +106,21 @@ public class AuthController implements Initializable {
             txPeringatan.setText("username is not available");
             clearPassword(); tfUsername.clear();
         } else {
-            dbPengguna.addPengguna(new Pengguna(dbPengguna.sizePengguna() + 1,nama, user, email, Main.MD5(pass)));
+            dbPengguna.add(new Pengguna(dbPengguna.size() + 1,nama, user, email, Main.MD5(pass)));
+            try {
+                XMLController xml = new XMLController();
+                xml.savePengguna();
+            } catch (ParserConfigurationException ex) {
+                Logger.getLogger(AuthController.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (TransformerException ex) {
+                Logger.getLogger(AuthController.class.getName()).log(Level.SEVERE, null, ex);
+            }
             Alert alert = new Alert(AlertType.INFORMATION);
             alert.setTitle("Succes");
             alert.setContentText("You have been registered");
             alert.showAndWait();
             
             Main.RedirectPage(getClass(), btnRegister, "LoginPage");
-//            Stage stage;
-//            Parent root;
-//            stage = (Stage) btnRegister.getScene().getWindow();
-//            root = FXMLLoader.load(getClass().getResource("/view/LoginPage.fxml"));
-//            Scene scene = new Scene(root);
-//            stage.setScene(scene);
-//            stage.show();
         }
     }
     

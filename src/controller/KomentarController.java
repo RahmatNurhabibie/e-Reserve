@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package controller;
-import model.DBPengguna;
+import model.LstPengguna;
 import model.Komentar;
 
 /**
@@ -35,7 +35,7 @@ public class KomentarController {
         String isi = tfKomentar.getText();
         if (!isi.isEmpty()){
             Komentar komen = new Komentar(isi, 123);
-//            DBPengguna.TblKomentar.add(komen);
+//            LstPengguna.TblKomentar.add(komen);
             lbNotif.setText("Pesan Terkirim !");    
         } else {
             lbNotif.setText("form komentar masih kosong!");    

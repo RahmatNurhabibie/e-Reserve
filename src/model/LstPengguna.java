@@ -11,26 +11,51 @@ import java.util.function.Predicate;
  *
  * @author NizomSidiq
  */
-public class DBPengguna {
+public class LstPengguna {
     // attribute
-    private static List<Komentar> TblKomentar = new ArrayList<Komentar>();
     private static List<Pengguna> TblPengguna = new ArrayList<Pengguna>();
-    private static List<Ruangan> TblRuangan = new ArrayList<Ruangan>();
-    private static List<Pemesanan> TblPemesanan = new ArrayList<Pemesanan>();
         
     // Methods Pengguna
-    public void addPengguna(Pengguna p){
+    public void add(Pengguna p){
         TblPengguna.add(p);
     }
-    public Pengguna getPengguna(int id){
+    public Pengguna get(int id){
         return TblPengguna.get(id - 1);
     }
-    public int sizePengguna(){
+    public int size(){
         return TblPengguna.size();
     }
-    public void editPengguna(int id, Pengguna p){
+    public void edit(int id, Pengguna p){
         TblPengguna.set(id - 1, p);
     }
+    /**
+    getSortedBy(option)
+    * "id" ||
+    * "nama" ||
+    * "username" ||
+    * "email"
+    @return sortedList
+    */
+    public List<Pengguna> getSortedBy(String str){
+        List<Pengguna> tmp = TblPengguna;
+        switch (str){
+            case "id":
+                tmp.sort((o1, o2) -> ((Integer)o1.getId()).compareTo((Integer)o2.getId()));
+                break;
+            case "nama":
+                tmp.sort((o1, o2) -> o1.getName().compareTo(o2.getName()));
+                break;
+            case "username":
+                tmp.sort((o1, o2) -> o1.getUsername().compareTo(o2.getUsername()));
+                break;
+            case "email":
+                tmp.sort((o1, o2) -> o1.getEmail().compareTo(o2.getEmail()));
+                break;
+        }
+        return tmp;
+    }
+    
+    
     //username unique validator
     public Pengguna isExist(String username) {
         try {

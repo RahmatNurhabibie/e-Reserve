@@ -5,7 +5,7 @@
  */
 package controller;
 
-import model.DBPengguna;
+import model.LstPengguna;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -22,14 +22,14 @@ public class UserController implements Initializable {
     Label lbId, lbName, lbUsername, lbEmail, lbJabatan, lbAktif,
           dataId, dataName, dataUsername, dataEmail, dataJabatan, dataAktif;
     
-    private DBPengguna dbpengguna = new DBPengguna();
+    private LstPengguna dbpengguna = new LstPengguna();
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         String id, name, username, email, jabatan, aktif;
         id = name = username = email = jabatan = aktif = "";
         
-        for (int i = 1; i <= dbpengguna.sizePengguna(); i++ ){
-            Pengguna tmp = dbpengguna.getPengguna(i);
+        for (int i = 1; i <= dbpengguna.size(); i++ ){
+            Pengguna tmp = dbpengguna.get(i);
             
             id = id + tmp.getId() + "\n";
             name = name + tmp.getName() + "\n";

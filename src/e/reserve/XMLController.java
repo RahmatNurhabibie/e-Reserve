@@ -5,8 +5,7 @@
  */
 package e.reserve;
 
-import model.DBPengguna;
-import static e.reserve.Main.MD5;
+import model.LstPengguna;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -31,7 +30,7 @@ import org.xml.sax.SAXException;
  * @author NizomSidiq
  */
 public class XMLController {
-    private DBPengguna db = new DBPengguna();
+    private LstPengguna db = new LstPengguna();
     public void saveXML() throws ParserConfigurationException, TransformerException{
        	savePengguna(); 
        	// savePemesanan(); -- not ready 
@@ -50,7 +49,7 @@ public class XMLController {
            System.out.println("file tidak ditemukan");
        }
     }
-    private void savePengguna() throws ParserConfigurationException, TransformerConfigurationException, TransformerException{
+    public void savePengguna() throws ParserConfigurationException, TransformerConfigurationException, TransformerException{
         DocumentBuilderFactory produsen = DocumentBuilderFactory.newInstance();
         DocumentBuilder pembuat = produsen.newDocumentBuilder();
     	Document docPengguna = pembuat.newDocument();
@@ -59,27 +58,27 @@ public class XMLController {
 	docPengguna.appendChild(rootPengguna);
 
         //Tulis XML (Membangun Data XML dari List)
-        for(int i=1; i <= db.sizePengguna(); i++){
+        for(int i=1; i <= db.size(); i++){
             Element tagPengguna = docPengguna.createElement("Pengguna");
-            tagPengguna.setAttribute("id", ""+ db.getPengguna(i).getId());
-            tagPengguna.setAttribute("role", ""+ db.getPengguna(i).getJabatan());
-            tagPengguna.setAttribute("active", ""+ db.getPengguna(i).getIs_aktif());
+            tagPengguna.setAttribute("id", ""+ db.get(i).getId());
+            tagPengguna.setAttribute("role", ""+ db.get(i).getJabatan());
+            tagPengguna.setAttribute("active", ""+ db.get(i).getIs_aktif());
             rootPengguna.appendChild(tagPengguna);
             // Nama
             Element tagName = docPengguna.createElement("Name");
-            tagName.setTextContent(db.getPengguna(i).getName());
+            tagName.setTextContent(db.get(i).getName());
             tagPengguna.appendChild(tagName);
             // Username
             Element tagUsername = docPengguna.createElement("Username");
-            tagUsername.setTextContent(db.getPengguna(i).getUsername());
+            tagUsername.setTextContent(db.get(i).getUsername());
             tagPengguna.appendChild(tagUsername);
             // Password
             Element tagPassword = docPengguna.createElement("Password");
-            tagPassword.setTextContent(db.getPengguna(i).getPassword());
+            tagPassword.setTextContent(db.get(i).getPassword());
             tagPengguna.appendChild(tagPassword);
             // Email
             Element tagEmail = docPengguna.createElement("Email");
-            tagEmail.setTextContent(db.getPengguna(i).getEmail());
+            tagEmail.setTextContent(db.get(i).getEmail());
             tagPengguna.appendChild(tagEmail);
         }
         //Membuat file XML
@@ -124,7 +123,7 @@ public class XMLController {
                 Pengguna tmp = new Pengguna(id, nama, username, email, password); 
                 tmp.setJabatan(jabatan); 
                 tmp.setAktif(is_aktif);
-                db.addPengguna(tmp);
+                db.add(tmp);
             }
         }
     }

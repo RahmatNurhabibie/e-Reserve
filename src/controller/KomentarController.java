@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package controller;
+import e.reserve.Main;
+import java.time.LocalDate;
 import model.LstPengguna;
 import model.Komentar;
 
@@ -18,6 +20,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import model.LstKomentar;
 
 
 public class KomentarController {
@@ -30,11 +33,14 @@ public class KomentarController {
     @FXML
     private Label lbNotif; 
     
+    LstKomentar dbKomentar = new LstKomentar();
+    int uid = Main.getSession();
+    
     @FXML
     private void handleButtonSubmit (ActionEvent event) {
         String isi = tfKomentar.getText();
         if (!isi.isEmpty()){
-            Komentar komen = new Komentar(isi, 123);
+            Komentar komen = new Komentar(dbKomentar.size(), uid, isi, LocalDate.now());
 //            LstPengguna.TblKomentar.add(komen);
             lbNotif.setText("Pesan Terkirim !");    
         } else {

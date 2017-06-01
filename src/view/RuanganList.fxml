@@ -15,5 +15,14 @@
       <Label layoutX="457.0" layoutY="116.0" text="Label" />
       <Pane prefHeight="65.0" prefWidth="800.0" style="-fx-background-color: #06337b;" />
       <Label layoutX="55.0" layoutY="116.0" text="Id" />
+      <TableView fx:id="TableViewKomentar" layoutX="67.0" layoutY="149.0" prefHeight="228.0" prefWidth="666.0">
+        <columns>
+          <TableColumn fx:id="ColId" prefWidth="35.0" style="text-align: center;" text="Id" />
+          <TableColumn fx:id="ColNama" prefWidth="169.0" text="Nama" />
+            <TableColumn fx:id="ColKategori" prefWidth="100.0" text="Kategori" />
+            <TableColumn fx:id="ColHarga" prefWidth="112.0" text="Harga" />
+            <TableColumn fx:id="ColFasilitas" minWidth="2.0" prefWidth="127.0" text="Fasilitas" />
+        </columns>
+      </TableView>
    </children>
 </AnchorPane>

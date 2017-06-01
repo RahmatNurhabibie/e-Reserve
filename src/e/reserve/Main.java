@@ -22,6 +22,15 @@ import org.xml.sax.SAXException;
  */
 public class Main extends Application {
     
+    private static int session;
+    
+    public void setSession(int id){
+        Main.session = id;
+    }
+    public static int getSession(){
+        return Main.session;
+    }
+    
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/view/LoginPage.fxml"));

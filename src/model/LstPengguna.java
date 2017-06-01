@@ -16,6 +16,10 @@ public class LstPengguna {
     private static List<Pengguna> TblPengguna = new ArrayList<Pengguna>();
         
     // Methods Pengguna
+    public List<Pengguna> get(){
+        List<Pengguna> tmp = TblPengguna;
+        return tmp;
+    }
     public void add(Pengguna p){
         TblPengguna.add(p);
     }

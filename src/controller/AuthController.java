@@ -58,8 +58,9 @@ public class AuthController implements Initializable {
             Pengguna tmp = dbPengguna.isExist(username);
             if (Main.MD5(password).equals(tmp.getPassword())) {
                 System.out.println("Success Login");
+                Main m = new Main();
+                m.setSession(tmp.getId());
                 Alert alert = new Alert(AlertType.INFORMATION);
-                alert.setTitle("Succes");
                 alert.setContentText("Welcome to e-Reserve");
                 alert.showAndWait();
                 

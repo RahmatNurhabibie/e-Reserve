@@ -5,10 +5,19 @@
  */
 package controller;
 
+import javafx.fxml.FXML;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+
 /**
  *
  * @author Sptandi
  */
 public class PemesananController {
+    @FXML TableView TVPemesanan;
+    
+    @FXML
+    TableColumn TVColId, TVColNama, TVColRuang, TVColTglMulai, TVColTglSelesai;
+    
     
 }

@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.KelolaController">
    <children>
@@ -11,6 +16,35 @@
       <Label layoutX="238.0" layoutY="281.0" text="Ruang" />
       <Label layoutX="339.0" layoutY="281.0" text="Label" />
       <Label layoutX="442.0" layoutY="281.0" text="Tanggal" />
-      <Pane prefHeight="65.0" prefWidth="800.0" style="-fx-background-color: #06337b;" />
+      <Pane prefHeight="65.0" prefWidth="800.0" style="-fx-background-color: #06337b;">
+         <children>
+            <Label layoutX="527.0" layoutY="21.0" prefHeight="25.0" prefWidth="63.0" text="BOOKING" textFill="#ffffffe2">
+               <font>
+                  <Font name="SansSerif Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="630.0" layoutY="21.0" prefHeight="25.0" prefWidth="41.0" text="ROOM" textFill="#ffffffe2">
+               <font>
+                  <Font name="SansSerif Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="712.0" layoutY="21.0" prefHeight="25.0" prefWidth="72.0" text="FEEDBACK" textFill="#ffffffe2">
+               <font>
+                  <Font name="SansSerif Bold" size="12.0" />
+               </font>
+            </Label>
+         </children></Pane>
+      <ImageView fitHeight="82.0" fitWidth="200.0" layoutX="14.0" layoutY="-8.0">
+         <image>
+            <Image url="@Header-Logo-Left4-300x124.png" />
+         </image>
+      </ImageView>
+      <TableView layoutX="214.0" layoutY="160.0" prefHeight="200.0" prefWidth="378.0">
+        <columns>
+          <TableColumn prefWidth="106.0" text="Nama" />
+          <TableColumn prefWidth="127.0" text="Ruang" />
+            <TableColumn prefWidth="144.0" text="Tanggal" />
+        </columns>
+      </TableView>
    </children>
 </AnchorPane>

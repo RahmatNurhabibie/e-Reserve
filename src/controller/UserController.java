@@ -25,11 +25,9 @@ import model.Pengguna;
  */
 public class UserController implements Initializable {
     @FXML 
-    Label lbId, lbName, lbUsername, lbEmail, lbJabatan, lbAktif,
-          dataId, dataName, dataUsername, dataEmail, dataJabatan, dataAktif,
-          usernameSession;
-    
-    @FXML TableView TVPengguna;
+    Label usernameSession;
+    @FXML 
+    TableView TVPengguna;
     @FXML
     TableColumn TVColId, TVColNama, TVColUsername, TVColEmail, TVColJabatan, TVColAktif;
     
@@ -49,25 +47,6 @@ public class UserController implements Initializable {
         TVColAktif.setCellValueFactory(new PropertyValueFactory<Pengguna,String>("is_aktif"));
         ObservableList<Pengguna> oData = FXCollections.observableArrayList(dbpengguna.get());
         TVPengguna.setItems(oData);
-        // Text based Table
-        String id, name, username, email, jabatan, aktif;
-        id = name = username = email = jabatan = aktif = "";
         
-        for (int i = 1; i <= dbpengguna.size(); i++ ){
-            Pengguna tmp = dbpengguna.get(i);
-            
-            id = id + tmp.getId() + "\n";
-            name = name + tmp.getName() + "\n";
-            username = username + tmp.getUsername() + "\n";
-            email = email + tmp.getEmail() + "\n";
-            jabatan = jabatan + tmp.getJabatan() + "\n";
-            aktif = aktif + tmp.getIs_aktif() + "\n";
-        }
-//        dataId.setText(id);
-//        dataName.setText(name);
-//        dataUsername.setText(username);
-//        dataEmail.setText(email);
-//        dataJabatan.setText(jabatan);
-//        dataAktif.setText(aktif);
     }
 }

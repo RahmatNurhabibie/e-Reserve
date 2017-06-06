@@ -3,39 +3,52 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.KelolaController">
    <children>
-      <Label layoutX="450.0" layoutY="43.0" />
-      <Pane prefHeight="65.0" prefWidth="800.0" style="-fx-background-color: #06337b;">
-         <children>
-            <Label layoutX="529.0" layoutY="23.0" prefHeight="25.0" prefWidth="63.0" text="BOOKING" textFill="#ffffffe2">
-               <font>
-                  <Font name="SansSerif Bold" size="12.0" />
-               </font>
-            </Label>
-            <Label layoutX="632.0" layoutY="23.0" prefHeight="25.0" prefWidth="41.0" text="ROOM" textFill="#ffffffe2">
-               <font>
-                  <Font name="SansSerif Bold" size="12.0" />
-               </font>
-            </Label>
-            <Label layoutX="714.0" layoutY="23.0" prefHeight="25.0" prefWidth="72.0" text="FEEDBACK" textFill="#ffffffe2">
-               <font>
-                  <Font name="SansSerif Bold" size="12.0" />
-               </font>
-            </Label>
-         </children></Pane>
-      <TableView fx:id="TVPemesanan" layoutY="65.0" prefHeight="534.0" prefWidth="800.0">
+      <TableView fx:id="TVPemesanan" layoutX="136.0" layoutY="64.0" prefHeight="536.0" prefWidth="664.0">
          <columns>
             <TableColumn fx:id="TVColId" prefWidth="39.0" text="Id" />
             <TableColumn fx:id="TVColNama" prefWidth="171.0" text="Nama" />
             <TableColumn fx:id="TVColRuang" prefWidth="96.0" text="Ruang" />
-            <TableColumn fx:id="TVColTglMulai" prefWidth="239.0" text="Tanggal Mulai" />
-            <TableColumn fx:id="TVColTglSelesai" prefWidth="254.0" text="Tanggal Selesai" />
+            <TableColumn fx:id="TVColTglMulai" prefWidth="170.0" text="Tanggal Mulai" />
+            <TableColumn fx:id="TVColTglSelesai" minWidth="0.0" prefWidth="187.0" text="Tanggal Selesai" />
          </columns>
       </TableView>
+      <Pane layoutY="-2.0" prefHeight="601.0" prefWidth="136.0" style="-fx-background-color: #ECF1F2;">
+         <children>
+            <Pane prefHeight="68.0" prefWidth="800.0" style="-fx-background-color: #06337b;">
+               <children>
+                  <ImageView fitHeight="74.0" fitWidth="174.0" layoutY="-2.0">
+                     <image>
+                        <Image url="@Header-Logo-Left4-300x124.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Label layoutX="24.0" layoutY="99.0" prefHeight="25.0" prefWidth="41.0" text="Room" textFill="#030303e3">
+               <font>
+                  <Font name="SansSerif Regular" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="24.0" layoutY="143.0" prefHeight="25.0" prefWidth="72.0" text="Feedback" textFill="#000000e3">
+               <font>
+                  <Font name="SansSerif Regular" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="lbSession" layoutX="29.0" layoutY="527.0" text="Username : " />
+            <Label fx:id="usernameSession" layoutX="56.0" layoutY="561.0" text="Nijom" />
+            <Label layoutX="24.0" layoutY="187.0" prefHeight="25.0" prefWidth="72.0" text="Booking" textFill="#000000e3">
+               <font>
+                  <Font name="SansSerif Regular" size="12.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

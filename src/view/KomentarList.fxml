@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.gluonhq.charm.glisten.control.Icon?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -29,24 +30,40 @@
                   </ImageView>
                </children>
             </Pane>
-            <Label layoutX="24.0" layoutY="99.0" prefHeight="25.0" prefWidth="41.0" text="Room" textFill="#030303e3">
-               <font>
-                  <Font name="SansSerif Regular" size="12.0" />
-               </font>
-            </Label>
-            <Label layoutX="24.0" layoutY="143.0" prefHeight="25.0" prefWidth="72.0" text="Feedback" textFill="#000000e3">
-               <font>
-                  <Font name="SansSerif Regular" size="12.0" />
-               </font>
-            </Label>
             <Label fx:id="lbSession" layoutX="29.0" layoutY="527.0" text="Username : " />
             <Label fx:id="usernameSession" layoutX="56.0" layoutY="561.0" text="Nijom" />
-            <Label layoutX="24.0" layoutY="187.0" prefHeight="25.0" prefWidth="72.0" text="Booking" textFill="#000000e3">
-               <font>
-                  <Font name="SansSerif Regular" size="12.0" />
-               </font>
-            </Label>
+            <Icon content="HELP_OUTLINE" layoutX="10.0" layoutY="357.0" />
          </children>
       </Pane>
+      <Label layoutX="34.0" layoutY="109.0" prefHeight="25.0" prefWidth="54.0" text="Booking" textFill="#030303e3">
+         <font>
+            <Font name="SansSerif Regular" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="34.0" layoutY="153.0" prefHeight="25.0" prefWidth="72.0" text="Ruangan" textFill="#000000e3">
+         <font>
+            <Font name="SansSerif Regular" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="34.0" layoutY="197.0" prefHeight="25.0" prefWidth="72.0" text="Feedback" textFill="#000000e3">
+         <font>
+            <Font name="SansSerif Regular" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="34.0" layoutY="315.0" prefHeight="25.0" prefWidth="54.0" text="User List" textFill="#000000e3">
+         <font>
+            <Font name="SansSerif Regular" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="34.0" layoutY="354.0" prefHeight="25.0" prefWidth="83.0" text="Feedback List" textFill="#000000e3">
+         <font>
+            <Font name="SansSerif Regular" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="34.0" layoutY="394.0" prefHeight="25.0" prefWidth="73.0" text="Booking List" textFill="#000000e3">
+         <font>
+            <Font name="SansSerif Regular" size="12.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

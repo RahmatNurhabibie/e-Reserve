@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #151D25;" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UserController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #05AA75;" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UserController">
    <children>
       <TableView fx:id="TVPengguna" layoutX="136.0" layoutY="67.0" prefHeight="534.0" prefWidth="664.0">
         <columns>
@@ -24,48 +24,66 @@
       </TableView>
       <Pane prefHeight="601.0" prefWidth="136.0" style="-fx-background-color: #05AA75;">
          <children>
-            <Pane prefHeight="68.0" prefWidth="136.0" style="-fx-background-color: #151D25;">
-               <children>
-                  <ImageView fitHeight="74.0" fitWidth="174.0" layoutY="-2.0">
-                     <image>
-                        <Image url="@Header-Logo-Left4-300x124.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </Pane>
-            <Label layoutX="34.0" layoutY="109.0" prefHeight="25.0" prefWidth="54.0" text="Booking" textFill="#030303e3">
+            <Pane layoutX="-6.0" layoutY="333.0" prefHeight="51.0" prefWidth="10.0" style="-fx-background-color: #3A3B4A;" />
+            <Pane prefHeight="68.0" prefWidth="137.0" style="-fx-background-color: #3A3B4A;" />
+            <Pane layoutY="68.0" prefHeight="0.0" prefWidth="136.0" style="-fx-background-color: #151D25;" />
+            <Label layoutX="52.0" layoutY="111.0" prefHeight="25.0" prefWidth="72.0" text="BOOKING" textFill="#ffffffe3">
+               <font>
+                  <Font name="Calibri" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="54.0" layoutY="175.0" prefHeight="25.0" prefWidth="72.0" text="ROOM" textFill="#ffffffe3">
+               <font>
+                  <Font name="Calibri" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="lbSession" layoutX="46.0" layoutY="14.0" text="Login as" textFill="#e3e4ec" />
+            <Label fx:id="usernameSession" layoutX="51.0" layoutY="37.0" text="Nijom" textFill="#e3e4ec" />
+            <Label layoutX="54.0" layoutY="238.0" prefHeight="25.0" prefWidth="72.0" text="FEEDBACK" textFill="#ffffffe3">
+               <font>
+                  <Font name="Calibri" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="56.0" layoutY="346.0" prefHeight="25.0" prefWidth="64.0" text="USER LIST" textFill="#ffffffe3">
+               <font>
+                  <Font name="Calibri Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="55.0" layoutY="430.0" prefHeight="25.0" prefWidth="83.0" text="Feedback List" textFill="#000000e3">
                <font>
                   <Font name="SansSerif Regular" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="34.0" layoutY="153.0" prefHeight="25.0" prefWidth="72.0" text="Ruangan" textFill="#000000e3">
+            <Label layoutX="54.0" layoutY="477.0" prefHeight="25.0" prefWidth="73.0" text="Booking List" textFill="#000000e3">
                <font>
                   <Font name="SansSerif Regular" size="12.0" />
                </font>
             </Label>
-            <Label fx:id="lbSession" layoutX="30.0" layoutY="476.0" text="Login as" />
-            <Label fx:id="usernameSession" layoutX="57.0" layoutY="506.0" text="Nijom" />
-            <Label layoutX="34.0" layoutY="197.0" prefHeight="25.0" prefWidth="72.0" text="Feedback" textFill="#000000e3">
+            <ImageView layoutX="10.0" layoutY="107.0">
+               <image>
+                  <Image url="@Icon/bookmark.png" />
+               </image>
+            </ImageView>
+            <ImageView layoutX="10.0" layoutY="171.0">
+               <image>
+                  <Image url="@Icon/room-door.png" />
+               </image>
+            </ImageView>
+            <ImageView layoutX="10.0" layoutY="234.0">
+               <image>
+                  <Image url="@Icon/chat.png" />
+               </image>
+            </ImageView>
+            <ImageView layoutX="10.0" layoutY="342.0">
+               <image>
+                  <Image url="@Icon/team.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="btnLogOut" defaultButton="true" layoutX="21.0" layoutY="545.0" mnemonicParsing="false" onAction="#logOutAction" opacity="0.99" prefHeight="32.0" prefWidth="96.0" style="-fx-background-color: #FFFFFF;" text="LOG OUT" textFill="#05aa75">
                <font>
-                  <Font name="SansSerif Regular" size="12.0" />
+                  <Font name="System Bold" size="12.0" />
                </font>
-            </Label>
-            <Label layoutX="34.0" layoutY="315.0" prefHeight="25.0" prefWidth="54.0" text="User List" textFill="#000000e3">
-               <font>
-                  <Font name="SansSerif Regular" size="12.0" />
-               </font>
-            </Label>
-            <Label layoutX="34.0" layoutY="354.0" prefHeight="25.0" prefWidth="83.0" text="Feedback List" textFill="#000000e3">
-               <font>
-                  <Font name="SansSerif Regular" size="12.0" />
-               </font>
-            </Label>
-            <Label layoutX="34.0" layoutY="394.0" prefHeight="25.0" prefWidth="73.0" text="Booking List" textFill="#000000e3">
-               <font>
-                  <Font name="SansSerif Regular" size="12.0" />
-               </font>
-            </Label>
-            <Button fx:id="btnLogOut" layoutX="40.0" layoutY="548.0" mnemonicParsing="false" onAction="#logOutAction" text="Log out" />
+            </Button>
          </children>
       </Pane>
     </children>

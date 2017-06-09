@@ -10,7 +10,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #05AA75;" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AuthController">
    <children>
-      <Pane prefHeight="599.0" prefWidth="520.0" style="-fx-background-color: #151D25;">
+      <Pane prefHeight="600.0" prefWidth="520.0" style="-fx-background-color: #151D25;">
          <children>
             <Button fx:id="btnToRegister" layoutX="49.0" layoutY="377.0" mnemonicParsing="false" onAction="#toRegisterAction" prefHeight="32.0" prefWidth="96.0" style="-fx-background-color: #05AA75;" text="REGISTER" textFill="WHITE">
                <font>

@@ -32,6 +32,6 @@
             <Image url="@Icon/left-arrow-angle%20(1).png" />
          </image>
       </ImageView>
-      <Button fx:id="btnKembali" layoutX="53.0" layoutY="230.0" mnemonicParsing="false" onAction="#kembaliLogin" opacity="0.0" prefHeight="141.0" prefWidth="66.0" text="Button" />
+      <Button fx:id="btnKembali" layoutX="53.0" layoutY="200.0" mnemonicParsing="false" onAction="#kembaliLogin" opacity="0.0" prefHeight="141.0" prefWidth="66.0" text="Button" />
    </children>
 </AnchorPane>

@@ -6,17 +6,20 @@
 package controller;
 
 import e.reserve.Main;
+import java.io.IOException;
 import model.LstPengguna;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.Button;
 import model.Pengguna;
 
 /**
@@ -30,8 +33,18 @@ public class UserController implements Initializable {
     TableView TVPengguna;
     @FXML
     TableColumn TVColId, TVColNama, TVColUsername, TVColEmail, TVColJabatan, TVColAktif;
-    
+    @FXML
+    Button btnLogOut;
     private LstPengguna dbpengguna = new LstPengguna();
+    
+    @FXML
+    private void logOutAction (ActionEvent event) throws IOException {
+        Main sess = new Main();
+        sess.setSession(0);
+        Main.RedirectPage(getClass(), btnLogOut, "LoginPage");
+    }
+    
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         int uid = Main.getSession();

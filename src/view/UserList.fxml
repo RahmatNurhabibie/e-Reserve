@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.gluonhq.charm.glisten.control.Icon?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
@@ -11,8 +10,18 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UserController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #06337b;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UserController">
    <children>
+      <TableView fx:id="TVPengguna" layoutX="136.0" layoutY="66.0" prefHeight="534.0" prefWidth="664.0">
+        <columns>
+          <TableColumn fx:id="TVColId" prefWidth="39.0" text="Id" />
+          <TableColumn fx:id="TVColNama" prefWidth="171.0" text="Nama" />
+            <TableColumn fx:id="TVColUsername" prefWidth="96.0" text="Username" />
+            <TableColumn fx:id="TVColEmail" prefWidth="187.0" text="Email" />
+            <TableColumn fx:id="TVColJabatan" prefWidth="90.0" text="Jabatan" />
+            <TableColumn fx:id="TVColAktif" text="Aktif" />
+        </columns>
+      </TableView>
       <Label fx:id="lbId" layoutX="40.0" layoutY="-84.0" text="Id" />
       <Label fx:id="lbName" layoutX="88.0" layoutY="-84.0" text="Nama" />
       <Label fx:id="lbUsername" layoutX="265.0" layoutY="-84.0" text="Username" />
@@ -25,19 +34,9 @@
       <Label fx:id="dataEmail" layoutX="368.0" layoutY="-52.0" text="16523071@students.uii.ac.id" />
       <Label fx:id="dataJabatan" layoutX="557.0" layoutY="-52.0" text="Admin" />
       <Label fx:id="dataAktif" layoutX="646.0" layoutY="-52.0" text="True" />
-      <TableView fx:id="TVPengguna" layoutX="136.0" layoutY="65.0" prefHeight="535.0" prefWidth="664.0">
-        <columns>
-          <TableColumn fx:id="TVColId" prefWidth="39.0" text="Id" />
-          <TableColumn fx:id="TVColNama" prefWidth="171.0" text="Nama" />
-            <TableColumn fx:id="TVColUsername" prefWidth="96.0" text="Username" />
-            <TableColumn fx:id="TVColEmail" prefWidth="187.0" text="Email" />
-            <TableColumn fx:id="TVColJabatan" prefWidth="90.0" text="Jabatan" />
-            <TableColumn fx:id="TVColAktif" text="Aktif" />
-        </columns>
-      </TableView>
-      <Pane layoutY="-2.0" prefHeight="601.0" prefWidth="136.0" style="-fx-background-color: #ECF1F2;">
+      <Pane layoutX="2.0" layoutY="-2.0" prefHeight="601.0" prefWidth="136.0" style="-fx-background-color: #ECF1F2;">
          <children>
-            <Pane prefHeight="68.0" prefWidth="800.0" style="-fx-background-color: #06337b;">
+            <Pane prefHeight="68.0" prefWidth="136.0" style="-fx-background-color: #06337b;">
                <children>
                   <ImageView fitHeight="74.0" fitWidth="174.0" layoutY="-2.0">
                      <image>
@@ -78,8 +77,7 @@
                   <Font name="SansSerif Regular" size="12.0" />
                </font>
             </Label>
-            <Icon content="HELP_OUTLINE" layoutX="8.0" layoutY="319.0" />
-            <Button layoutX="40.0" layoutY="548.0" mnemonicParsing="false" text="Log out" />
+            <Button fx:id="btnLogOut" layoutX="40.0" layoutY="548.0" mnemonicParsing="false" onAction="#logOutAction" text="Log out" />
          </children>
       </Pane>
     </children>

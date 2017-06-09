@@ -10,9 +10,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #06337b;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UserController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #151D25;" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UserController">
    <children>
-      <TableView fx:id="TVPengguna" layoutX="136.0" layoutY="66.0" prefHeight="534.0" prefWidth="664.0">
+      <TableView fx:id="TVPengguna" layoutX="136.0" layoutY="67.0" prefHeight="534.0" prefWidth="664.0">
         <columns>
           <TableColumn fx:id="TVColId" prefWidth="39.0" text="Id" />
           <TableColumn fx:id="TVColNama" prefWidth="171.0" text="Nama" />
@@ -22,21 +22,9 @@
             <TableColumn fx:id="TVColAktif" text="Aktif" />
         </columns>
       </TableView>
-      <Label fx:id="lbId" layoutX="40.0" layoutY="-84.0" text="Id" />
-      <Label fx:id="lbName" layoutX="88.0" layoutY="-84.0" text="Nama" />
-      <Label fx:id="lbUsername" layoutX="265.0" layoutY="-84.0" text="Username" />
-      <Label fx:id="lbEmail" layoutX="367.0" layoutY="-84.0" text="Email" />
-      <Label fx:id="lbJabatan" layoutX="557.0" layoutY="-84.0" text="Jabatan" />
-      <Label fx:id="lbAktif" layoutX="647.0" layoutY="-84.0" text="Aktif" />
-      <Label fx:id="dataId" layoutX="42.0" layoutY="-52.0" text="1" />
-      <Label fx:id="dataName" layoutX="85.0" layoutY="-52.0" text="Muh Nizomuddin Fauza Sidiq" />
-      <Label fx:id="dataUsername" layoutX="265.0" layoutY="-52.0" text="therour" />
-      <Label fx:id="dataEmail" layoutX="368.0" layoutY="-52.0" text="16523071@students.uii.ac.id" />
-      <Label fx:id="dataJabatan" layoutX="557.0" layoutY="-52.0" text="Admin" />
-      <Label fx:id="dataAktif" layoutX="646.0" layoutY="-52.0" text="True" />
-      <Pane layoutX="2.0" layoutY="-2.0" prefHeight="601.0" prefWidth="136.0" style="-fx-background-color: #ECF1F2;">
+      <Pane prefHeight="601.0" prefWidth="136.0" style="-fx-background-color: #05AA75;">
          <children>
-            <Pane prefHeight="68.0" prefWidth="136.0" style="-fx-background-color: #06337b;">
+            <Pane prefHeight="68.0" prefWidth="136.0" style="-fx-background-color: #151D25;">
                <children>
                   <ImageView fitHeight="74.0" fitWidth="174.0" layoutY="-2.0">
                      <image>

@@ -41,7 +41,7 @@ public class AuthController implements Initializable {
     @FXML 
     private Text txPeringatan;
     @FXML
-    private Button btnRegister, btnToRegister, btnLogin;
+    private Button btnRegister, btnToRegister, btnLogin, btnKembali;
     
     private LstPengguna dbPengguna = new LstPengguna();
     @Override
@@ -80,6 +80,11 @@ public class AuthController implements Initializable {
     @FXML
     private void toRegisterAction (ActionEvent event) throws IOException {
         Main.RedirectPage(getClass(), btnToRegister, "RegisterForm");
+    }
+    
+    @FXML
+    private void kembaliLogin() throws IOException {
+        Main.RedirectPage(getClass(), btnKembali, "LoginPage");
     }
     
     @FXML
@@ -124,7 +129,7 @@ public class AuthController implements Initializable {
             Main.RedirectPage(getClass(), btnRegister, "LoginPage");
         }
     }
-    
+     
     // clear password
     private void clearPassword(){
         tfPassword.clear();

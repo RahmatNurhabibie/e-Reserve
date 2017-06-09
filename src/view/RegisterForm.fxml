@@ -10,30 +10,28 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AuthController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #151D25;" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AuthController">
    <children>
-      <Pane layoutY="3.0" prefHeight="601.0" prefWidth="800.0" style="-fx-background-color: #ECF1F2;">
+      <Pane layoutX="185.0" prefHeight="600.0" prefWidth="615.0" style="-fx-background-color: #05AA75;">
          <children>
-            <Pane layoutY="-4.0" prefHeight="69.0" prefWidth="800.0" style="-fx-background-color: #06337b;">
-               <children>
-                  <ImageView fitHeight="74.0" fitWidth="174.0" layoutY="-2.0">
-                     <image>
-                        <Image url="@Header-Logo-Left4-300x124.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </Pane>
+            <TextField fx:id="tfName" layoutX="172.0" layoutY="177.0" prefHeight="33.0" prefWidth="197.0" promptText="Name" />
+            <TextField fx:id="tfUsername" layoutX="172.0" layoutY="221.0" prefHeight="33.0" prefWidth="197.0" promptText="Username" />
+            <TextField fx:id="tfEmail" layoutX="172.0" layoutY="265.0" prefHeight="33.0" prefWidth="197.0" promptText="Email" />
+            <PasswordField fx:id="tfPassword" layoutX="171.0" layoutY="309.0" prefHeight="33.0" prefWidth="197.0" promptText="Password" />
+            <PasswordField fx:id="tfPassword2" layoutX="171.0" layoutY="354.0" prefHeight="33.0" prefWidth="197.0" promptText="Confirm Password" />
+            <Button fx:id="btnRegister" defaultButton="true" layoutX="228.0" layoutY="441.0" mnemonicParsing="false" onAction="#registerAction" prefHeight="33.0" prefWidth="83.0" style="-fx-background-color: #FFFFFF;" text="REGISTER" textFill="#05aa75">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
          </children>
       </Pane>
-      <TextField fx:id="tfName" layoutX="309.0" layoutY="187.0" prefHeight="33.0" prefWidth="197.0" promptText="Name" />
-      <TextField fx:id="tfUsername" layoutX="309.0" layoutY="231.0" prefHeight="33.0" prefWidth="197.0" promptText="Username" />
-      <TextField fx:id="tfEmail" layoutX="309.0" layoutY="275.0" prefHeight="33.0" prefWidth="197.0" promptText="Email" />
-      <PasswordField fx:id="tfPassword" layoutX="308.0" layoutY="319.0" prefHeight="33.0" prefWidth="197.0" promptText="Password" />
-      <PasswordField fx:id="tfPassword2" layoutX="308.0" layoutY="364.0" prefHeight="33.0" prefWidth="197.0" promptText="Confirm Password" />
-      <Button fx:id="btnRegister" defaultButton="true" layoutX="362.0" layoutY="461.0" mnemonicParsing="false" onAction="#registerAction" prefHeight="33.0" prefWidth="75.0" style="-fx-background-color: f7d217;" text="Register" textFill="#06337b">
-         <font>
-            <Font size="14.0" />
-         </font></Button>
       <Text fx:id="txPeringatan" fill="RED" layoutX="280.0" layoutY="419.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="254.0" />
+      <ImageView fitHeight="82.0" fitWidth="83.0" layoutX="44.0" layoutY="259.0" onMouseClicked="#kembaliLogin">
+         <image>
+            <Image url="@Icon/left-arrow-angle%20(1).png" />
+         </image>
+      </ImageView>
+      <Button fx:id="btnKembali" layoutX="53.0" layoutY="230.0" mnemonicParsing="false" onAction="#kembaliLogin" opacity="0.0" prefHeight="141.0" prefWidth="66.0" text="Button" />
    </children>
 </AnchorPane>

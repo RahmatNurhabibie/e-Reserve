@@ -12,16 +12,16 @@
 
 <AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PemesananController">
    <children>
-      <Button layoutX="533.0" layoutY="367.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="73.0" style="-fx-background-color: f7d217;" text="Booking" />
+      <Button layoutX="534.0" layoutY="407.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="73.0" style="-fx-background-color: f7d217;" text="Booking" />
       <TextField layoutX="413.0" layoutY="178.0" />
-      <TextField layoutX="419.0" layoutY="223.0" prefHeight="25.0" prefWidth="58.0" />
-      <TextField layoutX="504.0" layoutY="224.0" prefHeight="25.0" prefWidth="58.0" />
-      <Label layoutX="214.0" layoutY="228.0" text="Tanggal Pemesanan" />
+      <TextField layoutX="414.0" layoutY="229.0" prefHeight="25.0" prefWidth="58.0" />
+      <TextField layoutX="499.0" layoutY="230.0" prefHeight="25.0" prefWidth="58.0" />
+      <Label layoutX="214.0" layoutY="234.0" text="Tanggal Pemesanan" />
       <TextField layoutX="413.0" layoutY="279.0" />
       <Label layoutX="214.0" layoutY="283.0" text="Nama Kegiatan" />
       <Label layoutX="214.0" layoutY="182.0" text="Nama" />
-      <Button layoutX="383.0" layoutY="367.0" mnemonicParsing="false" style="-fx-background-color: f7d217;" text="Cek Ruang" />
-      <Label layoutX="455.0" layoutY="228.0" prefHeight="17.0" prefWidth="20.0" />
+      <Button layoutX="387.0" layoutY="407.0" mnemonicParsing="false" style="-fx-background-color: f7d217;" text="Cek Ruang" />
+      <Label layoutX="450.0" layoutY="234.0" prefHeight="17.0" prefWidth="20.0" />
       <Label layoutX="432.0" layoutY="187.0" text="-" />
       <Pane layoutY="-2.0" prefHeight="601.0" prefWidth="136.0" style="-fx-background-color: #ECF1F2;">
          <children>
@@ -69,5 +69,7 @@
             <Font name="SansSerif Regular" size="12.0" />
          </font>
       </Label>
+      <Label layoutX="214.0" layoutY="332.0" text="Organisasi" />
+      <TextField layoutX="413.0" layoutY="328.0" />
    </children>
 </AnchorPane>

@@ -21,6 +21,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import model.LstKomentar;
+import model.Pengguna;
 
 
 public class KomentarController {
@@ -34,13 +35,13 @@ public class KomentarController {
     private Label lbNotif; 
     
     LstKomentar dbKomentar = new LstKomentar();
-    int uid = Main.getSession();
+    Pengguna logged = Main.getSession();
     
     @FXML
     private void handleButtonSubmit (ActionEvent event) {
         String isi = tfKomentar.getText();
         if (!isi.isEmpty()){
-            Komentar komen = new Komentar(dbKomentar.size(), uid, isi, LocalDate.now());
+            Komentar komen = new Komentar(dbKomentar.size(), logged.getId(), isi, LocalDate.now());
 //            LstPengguna.TblKomentar.add(komen);
             lbNotif.setText("Pesan Terkirim !");    
         } else {

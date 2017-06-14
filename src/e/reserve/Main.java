@@ -14,6 +14,7 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
+import model.Pengguna;
 import org.xml.sax.SAXException;
 
 /**
@@ -22,12 +23,12 @@ import org.xml.sax.SAXException;
  */
 public class Main extends Application {
     
-    private static int session;
+    private static Pengguna session;
     
-    public void setSession(int id){
+    public void setSession(Pengguna id){
         Main.session = id;
     }
-    public static int getSession(){
+    public static Pengguna getSession(){
         return Main.session;
     }
     

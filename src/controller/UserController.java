@@ -40,15 +40,14 @@ public class UserController implements Initializable {
     @FXML
     private void logOutAction (ActionEvent event) throws IOException {
         Main sess = new Main();
-        sess.setSession(0);
+        sess.setSession(null);
         Main.RedirectPage(getClass(), btnLogOut, "LoginPage");
     }
     
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        int uid = Main.getSession();
-        Pengguna logged = dbpengguna.get(uid);
+        Pengguna logged = Main.getSession();
         usernameSession.setText(logged.getUsername());
         
         // With TableView

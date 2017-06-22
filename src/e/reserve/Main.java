@@ -6,6 +6,7 @@
 package e.reserve;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -14,7 +15,7 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
-import model.Pengguna;
+import model.*;
 import org.xml.sax.SAXException;
 
 /**
@@ -37,7 +38,7 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("/view/LoginPage.fxml"));
         
         Scene scene = new Scene(root);
-        
+        stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
     }
@@ -51,6 +52,24 @@ public class Main extends Application {
     public static void main(String[] args) throws SAXException, ParserConfigurationException, IOException, TransformerException {            
         XMLController xml = new XMLController();
         xml.readXML();
+                
+        LstPengguna dbPengguna = new LstPengguna();
+        LstRuangan dbRuangan = new LstRuangan();
+        LstKomentar dbKomentar = new LstKomentar();
+        LstPemesanan dbPemesanan = new LstPemesanan();
+        
+        // isi Ruangan
+        dbRuangan.add(new Ruangan(dbRuangan.size() + 1, "Ruang Auditorium", "Auditorium", 10000, "AC, 30 kursi"));
+        dbRuangan.add(new Ruangan(dbRuangan.size() + 1, "Hall", "Hall", 10000, "Kosong"));
+        dbRuangan.add(new Ruangan(dbRuangan.size() + 1, "Laboratorium Terpadu FTI", "Laboratorium", 1500, "AC, 30 kursi, Komputer"));
+        // isi Pemesanan
+        dbPemesanan.add(new Pemesanan(dbPemesanan.size() + 1, dbPengguna.get(1), dbRuangan.get(1), LocalDate.now(), LocalDate.parse("2017-06-20"), "Kappa 1"));
+        dbPemesanan.add(new Pemesanan(dbPemesanan.size() + 1, dbPengguna.get(2), dbRuangan.get(2), LocalDate.now(), LocalDate.parse("2015-07-10"), "kappa 2"));
+        dbPemesanan.add(new Pemesanan(dbPemesanan.size() + 1, dbPengguna.get(3), dbRuangan.get(3), LocalDate.now(), LocalDate.parse("2016-08-01"), "kappa 3"));
+        // isi Komentar
+        dbKomentar.add(new Komentar(dbKomentar.size() + 1, dbPengguna.get(1), dbRuangan.get(1), "Good 1", LocalDate.now() ));
+        dbKomentar.add(new Komentar(dbKomentar.size() + 1, dbPengguna.get(3), "Good 2", LocalDate.now() ));
+        dbKomentar.add(new Komentar(dbKomentar.size() + 1, dbPengguna.get(2), dbRuangan.get(2), "Good 3", LocalDate.now() ));
         launch(args);
     }
 

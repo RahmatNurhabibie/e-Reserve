@@ -41,7 +41,7 @@ public class KomentarController {
     private void handleButtonSubmit (ActionEvent event) {
         String isi = tfKomentar.getText();
         if (!isi.isEmpty()){
-            Komentar komen = new Komentar(dbKomentar.size(), logged.getId(), isi, LocalDate.now());
+            Komentar komen = new Komentar(dbKomentar.size(), logged, isi, LocalDate.now());
 //            LstPengguna.TblKomentar.add(komen);
             lbNotif.setText("Pesan Terkirim !");    
         } else {

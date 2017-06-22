@@ -5,10 +5,11 @@
  */
 package e.reserve;
 
-import model.LstPengguna;
+import model.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.time.LocalDate;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -18,7 +19,6 @@ import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
-import model.Pengguna;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -30,12 +30,16 @@ import org.xml.sax.SAXException;
  * @author NizomSidiq
  */
 public class XMLController {
-    private LstPengguna db = new LstPengguna();
+    private final LstPengguna dbPengguna = new LstPengguna();
+    private final LstKomentar dbKomentar = new LstKomentar();
+    private final LstRuangan dbRuangan = new LstRuangan();
+    private final LstPemesanan dbPemesanan = new LstPemesanan();
+    
     public void saveXML() throws ParserConfigurationException, TransformerException{
        	savePengguna(); 
-       	// savePemesanan(); -- not ready 
-       	// saveKomentar(); -- not ready
-       	// saveRuangan(); -- not ready
+       	savePemesanan(); 
+       	saveKomentar();
+       	saveRuangan();
         System.out.println("Tulis XML Selesai");
     }
     public void readXML() throws ParserConfigurationException, TransformerException, SAXException, IOException{
@@ -58,27 +62,27 @@ public class XMLController {
 	docPengguna.appendChild(rootPengguna);
 
         //Tulis XML (Membangun Data XML dari List)
-        for(int i=1; i <= db.size(); i++){
+        for(int i=1; i <= dbPengguna.size(); i++){
             Element tagPengguna = docPengguna.createElement("Pengguna");
-            tagPengguna.setAttribute("id", ""+ db.get(i).getId());
-            tagPengguna.setAttribute("role", ""+ db.get(i).getJabatan());
-            tagPengguna.setAttribute("active", ""+ db.get(i).getIs_aktif());
+            tagPengguna.setAttribute("id", ""+ dbPengguna.get(i).getId());
+            tagPengguna.setAttribute("role", ""+ dbPengguna.get(i).getJabatan());
+            tagPengguna.setAttribute("active", ""+ dbPengguna.get(i).getIs_aktif());
             rootPengguna.appendChild(tagPengguna);
             // Nama
             Element tagName = docPengguna.createElement("Name");
-            tagName.setTextContent(db.get(i).getName());
+            tagName.setTextContent(dbPengguna.get(i).getName());
             tagPengguna.appendChild(tagName);
             // Username
             Element tagUsername = docPengguna.createElement("Username");
-            tagUsername.setTextContent(db.get(i).getUsername());
+            tagUsername.setTextContent(dbPengguna.get(i).getUsername());
             tagPengguna.appendChild(tagUsername);
             // Password
             Element tagPassword = docPengguna.createElement("Password");
-            tagPassword.setTextContent(db.get(i).getPassword());
+            tagPassword.setTextContent(dbPengguna.get(i).getPassword());
             tagPengguna.appendChild(tagPassword);
             // Email
             Element tagEmail = docPengguna.createElement("Email");
-            tagEmail.setTextContent(db.get(i).getEmail());
+            tagEmail.setTextContent(dbPengguna.get(i).getEmail());
             tagPengguna.appendChild(tagEmail);
         }
         //Membuat file XML
@@ -123,79 +127,159 @@ public class XMLController {
                 Pengguna tmp = new Pengguna(id, nama, username, email, password); 
                 tmp.setJabatan(jabatan); 
                 tmp.setAktif(is_aktif);
-                db.add(tmp);
+                dbPengguna.add(tmp);
             }
         }
     }
    
-       /* ON PROGRESS */
-     private void savePemesanan(){
-  //   	Document docPemesanan = pembuat.newDocument();
-		// docPemesanan.setXmlStandalone(true);
-		// Element rootPemesanan = docPemesanan.createElement("Pemesanan");
-		// docPemesanan.appendChild(rootPemesanan);
-     }
-     private void saveKomentar(){
-  //   	Document docKomentar = pembuat.newDocument();
-		// docKomentar.setXmlStandalone(true);
-		// Element rootKomentar = dokumen.createElement("Komentar");
-		// docKomentar.appendChild(rootKomentar);
-     }
-     private void saveRuangan(){
-  //   	Document docRuangan = pembuat.newDocument();
-		// docRuangan.setXmlStandalone(true);
-		// Element rootRuangan = dokumen.createElement("Ruangan");
-		// docRuangan.appendChild(rootRuangan);
-     }
-    
-    /* tmp unused */
-    private static void readPengguna() throws ParserConfigurationException, SAXException, IOException {
-//        String Pengguna,Name,ID,Email,Jabatan,Status,Username,User;
+    public void savePemesanan() throws ParserConfigurationException, TransformerConfigurationException, TransformerException{
+        DocumentBuilderFactory produsen = DocumentBuilderFactory.newInstance();
+        DocumentBuilder pembuat = produsen.newDocumentBuilder();
+    	Document docPemesanan = pembuat.newDocument();
+	docPemesanan.setXmlStandalone(true);
+	Element rootPemesanan = docPemesanan.createElement("XMLPemesanan");
+	docPemesanan.appendChild(rootPemesanan);
+
+        //Tulis XML (Membangun Data XML dari List)
+        for(int i=1; i <= dbPemesanan.size(); i++){
+            Element tagPemesanan = docPemesanan.createElement("Pemesanan");
+            tagPemesanan.setAttribute("id", ""+ dbPemesanan.get(i).getId());
+            tagPemesanan.setAttribute("idPengguna", ""+ dbPemesanan.get(i).getPengguna().getId());
+            tagPemesanan.setAttribute("idRuangan", ""+ dbPemesanan.get(i).getRuangan().getId());
+            tagPemesanan.setAttribute("status", String.valueOf(dbPemesanan.get(i).getStatus()));
+            rootPemesanan.appendChild(tagPemesanan);
+            // Nama Kegiatan
+            Element tagNama = docPemesanan.createElement("Nama");
+            tagNama.setTextContent(dbPemesanan.get(i).getNama());
+            tagPemesanan.appendChild(tagNama);
+            // Tanggal Pemesanan
+            Element tagTglPesan = docPemesanan.createElement("TanggalPesan");
+            tagTglPesan.setTextContent(dbPemesanan.get(i).getTglPemesanan().toString());
+            tagPemesanan.appendChild(tagTglPesan);
+            // Waktu Kegiatan
+            Element tagWaktuKeg = docPemesanan.createElement("WaktuKegiatan");
+            tagWaktuKeg.setTextContent(dbPemesanan.get(i).getWaktuKegiatan().toString());
+            tagPemesanan.appendChild(tagWaktuKeg);
+            
+        }
+        //Membuat file XML
+        TransformerFactory transformerFactory = TransformerFactory.newInstance();
+        Transformer transformer = transformerFactory.newTransformer();
+        DOMSource dom = new DOMSource(docPemesanan);
+        StreamResult result = new StreamResult(new File("Pemesanan.xml"));
+        transformer.transform(dom, result);
+    }
+//    private void loadPemesanan() throws IOException, ParserConfigurationException, SAXException {
+//        int id;
+//        Pengguna pengguna;
+//        Ruangan ruangan;
+//        LocalDate tglPesan, waktu;
+//        String nama;
+//        boolean status;
 //        
-//        //list sementara untuk meanmpilkan
-//        List <Pengguna> TblPenggunaa = new ArrayList ();
-//        
-//        //persiapan baca file xml
-//        File fileXML = new File("Pengguna.xml");
+//        File fileXML = new File("Pemesanan.xml");
 //        DocumentBuilderFactory produsen = DocumentBuilderFactory.newInstance();
 //        DocumentBuilder pembuat = produsen.newDocumentBuilder();
-//        Document docPengguna = pembuat.parse(fileXML);
-//        docPengguna.getDocumentElement().normalize();
+//        Document dok = pembuat.parse(fileXML);
+//        dok.getDocumentElement().normalize();
 //        
-//        
-//        //membuat list pengguna
-//        NodeList listPengguna = docPengguna.getElementsByTagName("Pengguna");
-//        
-//        
-//        for(int i=0; i < listPengguna.getLength(); i++){
+//        //Menginisialisasi tag yang akan dibaca
+//        NodeList listXML = dok.getElementsByTagName("Pemesanan");
+//        System.out.println(listXML.getLength());
+//        for(int i=0; i < listXML.getLength(); i++){
 //            //Membuat node (atribut) yang akan dibaca (di contoh ada 5 node)
-//            Node nodeXML = listPengguna.item(i);
-//
+//            Node nodeXML = listXML.item(i);
+//            
 //            //Mengambil node untuk tiap iterasi (5 node = 5 iterasi)
 //            if(nodeXML.getNodeType() == Node.ELEMENT_NODE){
-//                Element sementara = (Element) nodeXML;
+//                Element elemenku = (Element) nodeXML;
 //                
 //                //Memindahkan ke variabel sementara
-//                User = sementara.getAttribute("Pengguna");
-//                Name = sementara.getElementsByTagName("Name").item(0).getTextContent();
-//                Username = sementara.getElementsByTagName("Username").item(0).getTextContent();
-//                Email = sementara.getElementsByTagName("Email").item(0).getTextContent();
+//                id = Integer.parseInt(elemenku.getAttribute("id").trim());
+//                pengguna = dbPengguna.get(Integer.parseInt(elemenku.getAttribute("idPengguna").trim()) - 1);
+//                ruangan = dbRuangan.get(Integer.parseInt(elemenku.getAttribute("idRuangan").trim()) - 1);
+//                tglPesan = LocalDate.parse(elemenku.getElementsByTagName("tglPesan").item(0).getTextContent());
+//                nama = elemenku.getElementsByTagName("Nama").item(0).getTextContent();
 //                
-//                
-//                //Memasukkan data yang didapat ke List sementara
-//                TblPenggunaa.add(new Pengguna(User, Name, Username, Email));
+//                //Memasukkan data yang didapat ke List
+//                Pengguna tmp = new Pengguna(id, nama, username, email, password); 
+//                tmp.setJabatan(jabatan); 
+//                tmp.setAktif(is_aktif);
+//                dbPengguna.add(tmp);
 //            }
 //        }
-//        
-//        //menampilkan di console sementara
-//        for(int i=0; i < TblPenggunaa.size(); i++){
-//            System.out.println("ID  : " + TblPenggunaa.get(i).getId());
-//            System.out.println("Nama : " + TblPenggunaa.get(i).getName());
-//            System.out.println("Username  : " + TblPenggunaa.get(i).getUsername());
-//            System.out.println("Email  : " + TblPenggunaa.get(i).getEmail());
-//            System.out.println("Status  : " + TblPenggunaa.get(i).getIs_aktif());
-//            System.out.println("Jabatan  : " + TblPenggunaa.get(i).getJabatan());
-//            System.out.println();
-//        }
+//    }
+    public void saveRuangan() throws ParserConfigurationException, TransformerConfigurationException, TransformerException{
+        DocumentBuilderFactory produsen = DocumentBuilderFactory.newInstance();
+        DocumentBuilder pembuat = produsen.newDocumentBuilder();
+    	Document docRuangan = pembuat.newDocument();
+	docRuangan.setXmlStandalone(true);
+	Element rootRuangan = docRuangan.createElement("XMLRuangan");
+	docRuangan.appendChild(rootRuangan);
+
+        //Tulis XML (Membangun Data XML dari List)
+        for(int i=1; i <= dbRuangan.size(); i++){
+            Element tagRuangan = docRuangan.createElement("Ruangan");
+            tagRuangan.setAttribute("id", ""+ dbRuangan.get(i).getId());
+            rootRuangan.appendChild(tagRuangan);
+            // Nama
+            Element tagNama = docRuangan.createElement("Nama");
+            tagNama.setTextContent(dbRuangan.get(i).getNama());
+            tagRuangan.appendChild(tagNama);
+            // Kategori
+            Element tagKategori = docRuangan.createElement("Kategori");
+            tagKategori.setTextContent(dbRuangan.get(i).getKategori());
+            tagRuangan.appendChild(tagKategori);
+            // Harga
+            Element tagHarga = docRuangan.createElement("Harga");
+            tagHarga.setTextContent("" + dbRuangan.get(i).getHarga());
+            tagRuangan.appendChild(tagHarga);
+            // Fasilitas
+            Element tagFasilitas = docRuangan.createElement("Fasilitas");
+            tagFasilitas.setTextContent(dbRuangan.get(i).getFasilitas());
+            tagRuangan.appendChild(tagFasilitas);
+        }
+        //Membuat file XML
+        TransformerFactory transformerFactory = TransformerFactory.newInstance();
+        Transformer transformer = transformerFactory.newTransformer();
+        DOMSource dom = new DOMSource(docRuangan);
+        StreamResult result = new StreamResult(new File("Ruangan.xml"));
+        transformer.transform(dom, result);
     }
+    
+    public void saveKomentar() throws ParserConfigurationException, TransformerConfigurationException, TransformerException{
+        DocumentBuilderFactory produsen = DocumentBuilderFactory.newInstance();
+        DocumentBuilder pembuat = produsen.newDocumentBuilder();
+    	Document docKomentar = pembuat.newDocument();
+	docKomentar.setXmlStandalone(true);
+	Element rootKomentar = docKomentar.createElement("XMLKomentar");
+	docKomentar.appendChild(rootKomentar);
+
+        //Tulis XML (Membangun Data XML dari List)
+        for(int i=1; i <= dbKomentar.size(); i++){
+            Element tagKomentar = docKomentar.createElement("Komentar");
+            tagKomentar.setAttribute("id", ""+ dbKomentar.get(i).getId());
+            tagKomentar.setAttribute("idPengguna", ""+ dbKomentar.get(i).getPengguna().getId());
+            if (dbKomentar.get(i).getRuangan() != null)
+                tagKomentar.setAttribute("idRuangan", ""+ dbKomentar.get(i).getRuangan().getId());
+            else
+                tagKomentar.setAttribute("idRuangan", "-1");
+            rootKomentar.appendChild(tagKomentar);
+            // Tanggal
+            Element tagTgl = docKomentar.createElement("Tanggal");
+            tagTgl.setTextContent(dbKomentar.get(i).getDate().toString());
+            tagKomentar.appendChild(tagTgl);
+            // Isi
+            Element tagIsi = docKomentar.createElement("Isi");
+            tagIsi.setTextContent(dbKomentar.get(i).getIsi());
+            tagKomentar.appendChild(tagIsi);    
+        }
+        //Membuat file XML
+        TransformerFactory transformerFactory = TransformerFactory.newInstance();
+        Transformer transformer = transformerFactory.newTransformer();
+        DOMSource dom = new DOMSource(docKomentar);
+        StreamResult result = new StreamResult(new File("Komentar.xml"));
+        transformer.transform(dom, result);
+    }
+    
 }

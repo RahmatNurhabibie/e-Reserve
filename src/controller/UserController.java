@@ -32,10 +32,10 @@ public class UserController implements Initializable {
     @FXML 
     TableView TVPengguna;
     @FXML
-    TableColumn TVColId, TVColNama, TVColUsername, TVColEmail, TVColJabatan, TVColAktif;
+    TableColumn<Pengguna, String> TVColId, TVColNama, TVColUsername, TVColEmail, TVColJabatan, TVColAktif;
     @FXML
     Button btnLogOut;
-    private LstPengguna dbpengguna = new LstPengguna();
+    private final LstPengguna dbpengguna = new LstPengguna();
     
     @FXML
     private void logOutAction (ActionEvent event) throws IOException {
@@ -51,12 +51,12 @@ public class UserController implements Initializable {
         usernameSession.setText(logged.getUsername());
         
         // With TableView
-        TVColId.setCellValueFactory(new PropertyValueFactory<Pengguna,String>("id"));
-        TVColNama.setCellValueFactory(new PropertyValueFactory<Pengguna,String>("name"));
-        TVColUsername.setCellValueFactory(new PropertyValueFactory<Pengguna,String>("username"));
-        TVColEmail.setCellValueFactory(new PropertyValueFactory<Pengguna,String>("email"));
-        TVColJabatan.setCellValueFactory(new PropertyValueFactory<Pengguna,String>("jabatan"));
-        TVColAktif.setCellValueFactory(new PropertyValueFactory<Pengguna,String>("is_aktif"));
+        TVColId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        TVColNama.setCellValueFactory(new PropertyValueFactory<>("name"));
+        TVColUsername.setCellValueFactory(new PropertyValueFactory<>("username"));
+        TVColEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
+        TVColJabatan.setCellValueFactory(new PropertyValueFactory<>("jabatan"));
+        TVColAktif.setCellValueFactory(new PropertyValueFactory<>("is_aktif"));
         ObservableList<Pengguna> oData = FXCollections.observableArrayList(dbpengguna.get());
         TVPengguna.setItems(oData);
         

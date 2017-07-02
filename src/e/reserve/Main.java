@@ -37,7 +37,7 @@ public class Main extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/view/LoginPage.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/view/DetailPage.fxml"));
         
         Scene scene = new Scene(root);
         stage.setResizable(false);
@@ -78,7 +78,7 @@ public class Main extends Application {
 
         // isi Komentar
         dbKomentar.add(new Komentar(dbKomentar.size() + 1, dbPengguna.get(1), dbRuangan.get(1), "Good 1", LocalDateTime.now() ));
-        dbKomentar.add(new Komentar(dbKomentar.size() + 1, dbPengguna.get(3), "Good 2", LocalDateTime.now() ));
+        dbKomentar.add(new Komentar(dbKomentar.size() + 1, dbPengguna.get(1), "Good 2", LocalDateTime.now() ));
         dbKomentar.add(new Komentar(dbKomentar.size() + 1, dbPengguna.get(2), dbRuangan.get(2), "Good 3", LocalDateTime.now() ));
         
         launch(args);

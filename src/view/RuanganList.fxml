@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.gluonhq.charm.glisten.control.Icon?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -18,7 +17,8 @@
           <TableColumn fx:id="ColNama" prefWidth="169.0" text="Nama" />
             <TableColumn fx:id="ColKategori" prefWidth="96.0" text="Kategori" />
             <TableColumn fx:id="ColHarga" prefWidth="133.0" text="Harga" />
-            <TableColumn fx:id="ColFasilitas" minWidth="2.0" prefWidth="232.0" text="Fasilitas" />
+            <TableColumn fx:id="ColFasilitas" minWidth="2.0" prefWidth="179.0" text="Fasilitas" />
+            <TableColumn fx:id="colButton" prefWidth="128.0" text=" " />
         </columns>
       </TableView>
       <Pane layoutY="-2.0" prefHeight="601.0" prefWidth="136.0" style="-fx-background-color: #ECF1F2;">
@@ -34,7 +34,6 @@
             </Pane>
             <Label fx:id="lbSession" layoutX="29.0" layoutY="527.0" text="Username : " />
             <Label fx:id="usernameSession" layoutX="56.0" layoutY="561.0" text="Nijom" />
-            <Icon content="HELP_OUTLINE" layoutX="14.0" layoutY="159.0" />
          </children>
       </Pane>
       <Label layoutX="34.0" layoutY="109.0" prefHeight="25.0" prefWidth="54.0" text="Booking" textFill="#030303e3">

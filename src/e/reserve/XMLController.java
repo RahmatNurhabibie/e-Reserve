@@ -156,10 +156,14 @@ public class XMLController {
             Element tagTglPesan = docPemesanan.createElement("TanggalPesan");
             tagTglPesan.setTextContent(dbPemesanan.get(i).getTglPemesanan().toString());
             tagPemesanan.appendChild(tagTglPesan);
-            // Waktu Kegiatan
-            Element tagWaktuKeg = docPemesanan.createElement("WaktuKegiatan");
-            tagWaktuKeg.setTextContent(dbPemesanan.get(i).getWaktuKegiatan().toString());
-            tagPemesanan.appendChild(tagWaktuKeg);
+            // Waktu Mulai Kegiatan
+            Element tagWaktuMulaiKeg = docPemesanan.createElement("WaktuMulaiKegiatan");
+            tagWaktuMulaiKeg.setTextContent(dbPemesanan.get(i).getWaktuKegiatan1().toString());
+            tagPemesanan.appendChild(tagWaktuMulaiKeg);
+            // Waktu Berakhir Kegiatan
+            Element tagWaktuAkhirKeg = docPemesanan.createElement("WaktuAkhirKegiatan");
+            tagWaktuAkhirKeg.setTextContent(dbPemesanan.get(i).getWaktuKegiatan2().toString());
+            tagPemesanan.appendChild(tagWaktuAkhirKeg);
             
         }
         //Membuat file XML

@@ -7,6 +7,8 @@ package e.reserve;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -63,13 +65,38 @@ public class Main extends Application {
         dbRuangan.add(new Ruangan(dbRuangan.size() + 1, "Hall", "Hall", 10000, "Kosong"));
         dbRuangan.add(new Ruangan(dbRuangan.size() + 1, "Laboratorium Terpadu FTI", "Laboratorium", 1500, "AC, 30 kursi, Komputer"));
         // isi Pemesanan
-        dbPemesanan.add(new Pemesanan(dbPemesanan.size() + 1, dbPengguna.get(1), dbRuangan.get(1), LocalDate.now(), LocalDate.parse("2017-06-20"), "Kappa 1"));
-        dbPemesanan.add(new Pemesanan(dbPemesanan.size() + 1, dbPengguna.get(2), dbRuangan.get(2), LocalDate.now(), LocalDate.parse("2015-07-10"), "kappa 2"));
-        dbPemesanan.add(new Pemesanan(dbPemesanan.size() + 1, dbPengguna.get(3), dbRuangan.get(3), LocalDate.now(), LocalDate.parse("2016-08-01"), "kappa 3"));
+        dbPemesanan.add(
+                new Pemesanan(
+                    dbPemesanan.size() + 1, 
+                    dbPengguna.get(1), 
+                    dbRuangan.get(2),
+                    "Porsematif", "tif",
+                    LocalDateTime.of(LocalDate.parse("2017-07-01"), LocalTime.now()),
+                    LocalDateTime.of(LocalDate.parse("2017-07-03"), LocalTime.parse("15:30"))     
+                ));
+        dbPemesanan.add(
+                new Pemesanan(
+                    dbPemesanan.size() + 1, 
+                    dbPengguna.get(2), 
+                    dbRuangan.get(3),
+                    "Porsematif", "tif",
+                    LocalDateTime.of(LocalDate.parse("2017-05-12"), LocalTime.now()),
+                    LocalDateTime.of(LocalDate.parse("2017-07-05"), LocalTime.parse("15:30"))     
+                ));
+        dbPemesanan.add(
+                new Pemesanan(
+                    dbPemesanan.size() + 1, 
+                    dbPengguna.get(5), 
+                    dbRuangan.get(1),
+                    "Porsematif", "tif",
+                    LocalDateTime.of(LocalDate.parse("2017-06-29"), LocalTime.now()),
+                    LocalDateTime.of(LocalDate.parse("2017-07-04"), LocalTime.parse("15:30"))     
+                ));
         // isi Komentar
         dbKomentar.add(new Komentar(dbKomentar.size() + 1, dbPengguna.get(1), dbRuangan.get(1), "Good 1", LocalDate.now() ));
         dbKomentar.add(new Komentar(dbKomentar.size() + 1, dbPengguna.get(3), "Good 2", LocalDate.now() ));
         dbKomentar.add(new Komentar(dbKomentar.size() + 1, dbPengguna.get(2), dbRuangan.get(2), "Good 3", LocalDate.now() ));
+        
         launch(args);
     }
 

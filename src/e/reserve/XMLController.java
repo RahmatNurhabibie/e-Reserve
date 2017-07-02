@@ -46,9 +46,9 @@ public class XMLController {
     public void readXML() throws ParserConfigurationException, TransformerException, SAXException, IOException{
        try {
            loadPengguna(); 
+           loadRuangan();
            loadPemesanan();
            loadKomentar();
-           loadRuangan();
            System.out.println("Load XML Selesai");
        } catch (FileNotFoundException f) {
            System.out.println("file tidak ditemukan");
@@ -353,11 +353,11 @@ public class XMLController {
                 id = Integer.parseInt(elemenku.getAttribute("id").trim());
                 isi = elemenku.getElementsByTagName("Isi").item(0).getTextContent();
                 try {
-                    pengguna = dbPengguna.get(Integer.parseInt(elemenku.getAttribute("idPengguna").trim()));
+                    ruangan = dbRuangan.get(Integer.parseInt(elemenku.getAttribute("idRuangan").trim()));
                 } catch (NumberFormatException e){
-                    pengguna = null;
+                    ruangan = null;
                 }
-                ruangan = dbRuangan.get(Integer.parseInt(elemenku.getAttribute("idRuangan").trim()));
+                pengguna = dbPengguna.get(Integer.parseInt(elemenku.getAttribute("idPengguna").trim()));
                 tgl = LocalDateTime.parse(elemenku.getElementsByTagName("Tanggal").item(0).getTextContent());
                 // Memasukkan data yang didapat ke List
                 Komentar tmp = new Komentar(id, pengguna, ruangan, isi, tgl);

@@ -25,13 +25,13 @@ public class Pemesanan {
     private boolean status; // true if confirmed by admin
     
     /* constructor */
-    public Pemesanan(int id, Pengguna pengguna, Ruangan ruangan,String institusi, String nama, LocalDateTime waktu1, LocalDateTime waktu2){
+    public Pemesanan(int id, Pengguna pengguna, Ruangan ruangan,String institusi, String nama, LocalDate tglPesan, LocalDateTime waktu1, LocalDateTime waktu2){
         this.id = id;
         this.id_pengguna = pengguna;
         this.id_ruangan = ruangan;
         this.nama_kegiatan = nama;
         this.institusi = institusi;
-        this.tgl_pemesanan = LocalDate.now();
+        this.tgl_pemesanan = tglPesan;
         this.waktu_kegiatan1 = waktu1;
         this.waktu_kegiatan2 = waktu2;
         this.status = false;

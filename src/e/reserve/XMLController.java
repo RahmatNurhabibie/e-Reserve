@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -45,9 +46,9 @@ public class XMLController {
     public void readXML() throws ParserConfigurationException, TransformerException, SAXException, IOException{
        try {
            loadPengguna(); 
-           // savePemesanan(); -- not ready 
-           // saveKomentar(); -- not ready
-           // saveRuangan(); -- not ready
+           loadPemesanan();
+           loadKomentar();
+           loadRuangan();
            System.out.println("Load XML Selesai");
        } catch (FileNotFoundException f) {
            System.out.println("file tidak ditemukan");
@@ -152,6 +153,10 @@ public class XMLController {
             Element tagNama = docPemesanan.createElement("Nama");
             tagNama.setTextContent(dbPemesanan.get(i).getNama());
             tagPemesanan.appendChild(tagNama);
+            // Institusi Pemesan
+            Element tagInstitut = docPemesanan.createElement("Institusi");
+            tagInstitut.setTextContent(dbPemesanan.get(i).getInstitusi());
+            tagPemesanan.appendChild(tagInstitut);
             // Tanggal Pemesanan
             Element tagTglPesan = docPemesanan.createElement("TanggalPesan");
             tagTglPesan.setTextContent(dbPemesanan.get(i).getTglPemesanan().toString());
@@ -173,46 +178,48 @@ public class XMLController {
         StreamResult result = new StreamResult(new File("Pemesanan.xml"));
         transformer.transform(dom, result);
     }
-//    private void loadPemesanan() throws IOException, ParserConfigurationException, SAXException {
-//        int id;
-//        Pengguna pengguna;
-//        Ruangan ruangan;
-//        LocalDate tglPesan, waktu;
-//        String nama;
-//        boolean status;
-//        
-//        File fileXML = new File("Pemesanan.xml");
-//        DocumentBuilderFactory produsen = DocumentBuilderFactory.newInstance();
-//        DocumentBuilder pembuat = produsen.newDocumentBuilder();
-//        Document dok = pembuat.parse(fileXML);
-//        dok.getDocumentElement().normalize();
-//        
-//        //Menginisialisasi tag yang akan dibaca
-//        NodeList listXML = dok.getElementsByTagName("Pemesanan");
-//        System.out.println(listXML.getLength());
-//        for(int i=0; i < listXML.getLength(); i++){
-//            //Membuat node (atribut) yang akan dibaca (di contoh ada 5 node)
-//            Node nodeXML = listXML.item(i);
-//            
-//            //Mengambil node untuk tiap iterasi (5 node = 5 iterasi)
-//            if(nodeXML.getNodeType() == Node.ELEMENT_NODE){
-//                Element elemenku = (Element) nodeXML;
-//                
-//                //Memindahkan ke variabel sementara
-//                id = Integer.parseInt(elemenku.getAttribute("id").trim());
-//                pengguna = dbPengguna.get(Integer.parseInt(elemenku.getAttribute("idPengguna").trim()) - 1);
-//                ruangan = dbRuangan.get(Integer.parseInt(elemenku.getAttribute("idRuangan").trim()) - 1);
-//                tglPesan = LocalDate.parse(elemenku.getElementsByTagName("tglPesan").item(0).getTextContent());
-//                nama = elemenku.getElementsByTagName("Nama").item(0).getTextContent();
-//                
-//                //Memasukkan data yang didapat ke List
-//                Pengguna tmp = new Pengguna(id, nama, username, email, password); 
-//                tmp.setJabatan(jabatan); 
-//                tmp.setAktif(is_aktif);
-//                dbPengguna.add(tmp);
-//            }
-//        }
-//    }
+    private void loadPemesanan() throws IOException, ParserConfigurationException, SAXException {
+        int id;
+        Pengguna pengguna;
+        Ruangan ruangan;
+        LocalDate tglPesan;
+        LocalDateTime mulai, akhir;
+        String nama, institusi;
+        boolean status;
+        
+        File fileXML = new File("Pemesanan.xml");
+        DocumentBuilderFactory produsen = DocumentBuilderFactory.newInstance();
+        DocumentBuilder pembuat = produsen.newDocumentBuilder();
+        Document dok = pembuat.parse(fileXML);
+        dok.getDocumentElement().normalize();
+        
+        //Menginisialisasi tag yang akan dibaca
+        NodeList listXML = dok.getElementsByTagName("Pemesanan");
+        System.out.println(listXML.getLength());
+        for(int i=0; i < listXML.getLength(); i++){
+            //Membuat node (atribut) yang akan dibaca (di contoh ada 5 node)
+            Node nodeXML = listXML.item(i);
+            
+            //Mengambil node untuk tiap iterasi (5 node = 5 iterasi)
+            if(nodeXML.getNodeType() == Node.ELEMENT_NODE){
+                Element elemenku = (Element) nodeXML;
+                
+                //Memindahkan ke variabel sementara
+                id = Integer.parseInt(elemenku.getAttribute("id").trim());
+                pengguna = dbPengguna.get(Integer.parseInt(elemenku.getAttribute("idPengguna").trim()));
+                ruangan = dbRuangan.get(Integer.parseInt(elemenku.getAttribute("idRuangan").trim()));
+                tglPesan = LocalDate.parse(elemenku.getElementsByTagName("TanggalPesan").item(0).getTextContent());
+                mulai = LocalDateTime.parse(elemenku.getElementsByTagName("WaktuMulaiKegiatan").item(0).getTextContent());
+                akhir = LocalDateTime.parse(elemenku.getElementsByTagName("WaktuAkhirKegiatan").item(0).getTextContent());
+                nama = elemenku.getElementsByTagName("Nama").item(0).getTextContent();
+                institusi = elemenku.getElementsByTagName("Institusi").item(0).getTextContent();
+                
+                //Memasukkan data yang didapat ke List
+                Pemesanan tmp = new Pemesanan(id, pengguna, ruangan, institusi, nama, tglPesan, mulai, akhir);
+                dbPemesanan.add(tmp);
+            }
+        }
+    }
     public void saveRuangan() throws ParserConfigurationException, TransformerConfigurationException, TransformerException{
         DocumentBuilderFactory produsen = DocumentBuilderFactory.newInstance();
         DocumentBuilder pembuat = produsen.newDocumentBuilder();
@@ -250,6 +257,39 @@ public class XMLController {
         StreamResult result = new StreamResult(new File("Ruangan.xml"));
         transformer.transform(dom, result);
     }
+    private void loadRuangan() throws IOException, ParserConfigurationException, SAXException {
+        int id, harga;
+        String nama, kategori, fasilitas;
+        
+        File fileXML = new File("Ruangan.xml");
+        DocumentBuilderFactory produsen = DocumentBuilderFactory.newInstance();
+        DocumentBuilder pembuat = produsen.newDocumentBuilder();
+        Document dok = pembuat.parse(fileXML);
+        dok.getDocumentElement().normalize();
+        
+        //Menginisialisasi tag yang akan dibaca
+        NodeList listXML = dok.getElementsByTagName("Ruangan");
+        System.out.println(listXML.getLength());
+        for(int i=0; i < listXML.getLength(); i++){
+            //Membuat node (atribut) yang akan dibaca (di contoh ada 5 node)
+            Node nodeXML = listXML.item(i);
+            
+            //Mengambil node untuk tiap iterasi (5 node = 5 iterasi)
+            if(nodeXML.getNodeType() == Node.ELEMENT_NODE){
+                Element elemenku = (Element) nodeXML;
+                
+                //Memindahkan ke variabel sementara
+                id = Integer.parseInt(elemenku.getAttribute("id").trim());
+                nama = elemenku.getElementsByTagName("Nama").item(0).getTextContent();
+                kategori = elemenku.getElementsByTagName("Kategori").item(0).getTextContent();
+                fasilitas = elemenku.getElementsByTagName("Fasilitas").item(0).getTextContent();
+                harga = Integer.parseInt(elemenku.getElementsByTagName("Harga").item(0).getTextContent().trim());
+                //Memasukkan data yang didapat ke List
+                Ruangan tmp = new Ruangan(id, nama, kategori, harga, fasilitas);
+                dbRuangan.add(tmp);
+            }
+        }
+    }
     
     public void saveKomentar() throws ParserConfigurationException, TransformerConfigurationException, TransformerException{
         DocumentBuilderFactory produsen = DocumentBuilderFactory.newInstance();
@@ -267,7 +307,7 @@ public class XMLController {
             if (dbKomentar.get(i).getRuangan() != null)
                 tagKomentar.setAttribute("idRuangan", ""+ dbKomentar.get(i).getRuangan().getId());
             else
-                tagKomentar.setAttribute("idRuangan", "-1");
+                tagKomentar.setAttribute("idRuangan", "-");
             rootKomentar.appendChild(tagKomentar);
             // Tanggal
             Element tagTgl = docKomentar.createElement("Tanggal");
@@ -285,5 +325,46 @@ public class XMLController {
         StreamResult result = new StreamResult(new File("Komentar.xml"));
         transformer.transform(dom, result);
     }
+    private void loadKomentar() throws IOException, ParserConfigurationException, SAXException {
+        int id;
+        String isi;
+        Pengguna pengguna;
+        Ruangan ruangan;
+        LocalDateTime tgl;
+        
+        File fileXML = new File("Komentar.xml");
+        DocumentBuilderFactory produsen = DocumentBuilderFactory.newInstance();
+        DocumentBuilder pembuat = produsen.newDocumentBuilder();
+        Document dok = pembuat.parse(fileXML);
+        dok.getDocumentElement().normalize();
+        
+        //Menginisialisasi tag yang akan dibaca
+        NodeList listXML = dok.getElementsByTagName("Komentar");
+        System.out.println(listXML.getLength());
+        for(int i=0; i < listXML.getLength(); i++){
+            //Membuat node (atribut) yang akan dibaca (di contoh ada 5 node)
+            Node nodeXML = listXML.item(i);
+            
+            //Mengambil node untuk tiap iterasi (5 node = 5 iterasi)
+            if(nodeXML.getNodeType() == Node.ELEMENT_NODE){
+                Element elemenku = (Element) nodeXML;
+                
+                //Memindahkan ke variabel sementara
+                id = Integer.parseInt(elemenku.getAttribute("id").trim());
+                isi = elemenku.getElementsByTagName("Isi").item(0).getTextContent();
+                try {
+                    pengguna = dbPengguna.get(Integer.parseInt(elemenku.getAttribute("idPengguna").trim()));
+                } catch (NumberFormatException e){
+                    pengguna = null;
+                }
+                ruangan = dbRuangan.get(Integer.parseInt(elemenku.getAttribute("idRuangan").trim()));
+                tgl = LocalDateTime.parse(elemenku.getElementsByTagName("Tanggal").item(0).getTextContent());
+                // Memasukkan data yang didapat ke List
+                Komentar tmp = new Komentar(id, pengguna, ruangan, isi, tgl);
+                dbKomentar.add(tmp);
+            }
+        }
+    }
+    
     
 }

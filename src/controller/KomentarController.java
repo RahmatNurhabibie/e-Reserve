@@ -6,6 +6,7 @@
 package controller;
 import e.reserve.Main;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import model.LstPengguna;
 import model.Komentar;
 
@@ -41,7 +42,7 @@ public class KomentarController {
     private void handleButtonSubmit (ActionEvent event) {
         String isi = tfKomentar.getText();
         if (!isi.isEmpty()){
-            Komentar komen = new Komentar(dbKomentar.size(), logged, isi, LocalDate.now());
+            Komentar komen = new Komentar(dbKomentar.size(), logged, isi, LocalDateTime.now());
 //            LstPengguna.TblKomentar.add(komen);
             lbNotif.setText("Pesan Terkirim !");    
         } else {

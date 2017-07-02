@@ -70,32 +70,16 @@ public class Main extends Application {
                     dbPemesanan.size() + 1, 
                     dbPengguna.get(1), 
                     dbRuangan.get(2),
-                    "Porsematif", "tif",
+                    "Porsematif", "Angkatan16",
+                    LocalDate.now(),
                     LocalDateTime.of(LocalDate.parse("2017-07-01"), LocalTime.now()),
                     LocalDateTime.of(LocalDate.parse("2017-07-03"), LocalTime.parse("15:30"))     
                 ));
-        dbPemesanan.add(
-                new Pemesanan(
-                    dbPemesanan.size() + 1, 
-                    dbPengguna.get(2), 
-                    dbRuangan.get(3),
-                    "Porsematif", "tif",
-                    LocalDateTime.of(LocalDate.parse("2017-05-12"), LocalTime.now()),
-                    LocalDateTime.of(LocalDate.parse("2017-07-05"), LocalTime.parse("15:30"))     
-                ));
-        dbPemesanan.add(
-                new Pemesanan(
-                    dbPemesanan.size() + 1, 
-                    dbPengguna.get(5), 
-                    dbRuangan.get(1),
-                    "Porsematif", "tif",
-                    LocalDateTime.of(LocalDate.parse("2017-06-29"), LocalTime.now()),
-                    LocalDateTime.of(LocalDate.parse("2017-07-04"), LocalTime.parse("15:30"))     
-                ));
+
         // isi Komentar
-        dbKomentar.add(new Komentar(dbKomentar.size() + 1, dbPengguna.get(1), dbRuangan.get(1), "Good 1", LocalDate.now() ));
-        dbKomentar.add(new Komentar(dbKomentar.size() + 1, dbPengguna.get(3), "Good 2", LocalDate.now() ));
-        dbKomentar.add(new Komentar(dbKomentar.size() + 1, dbPengguna.get(2), dbRuangan.get(2), "Good 3", LocalDate.now() ));
+        dbKomentar.add(new Komentar(dbKomentar.size() + 1, dbPengguna.get(1), dbRuangan.get(1), "Good 1", LocalDateTime.now() ));
+        dbKomentar.add(new Komentar(dbKomentar.size() + 1, dbPengguna.get(3), "Good 2", LocalDateTime.now() ));
+        dbKomentar.add(new Komentar(dbKomentar.size() + 1, dbPengguna.get(2), dbRuangan.get(2), "Good 3", LocalDateTime.now() ));
         
         launch(args);
     }

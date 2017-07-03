@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<<<<<<< HEAD
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
+=======
+>>>>>>> a4e70387893e15139f55dd7624986f2b17b86870
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
@@ -18,11 +21,11 @@
 
 <AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PemesananController">
    <children>
-      <Button layoutX="414.0" layoutY="419.0" mnemonicParsing="false" onAction="#bookingAction" prefHeight="25.0" prefWidth="73.0" style="-fx-background-color: f7d217;" text="Booking" />
+      <Button layoutX="537.0" layoutY="429.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="73.0" style="-fx-background-color: f7d217;" text="Booking" />
       <Label layoutX="214.0" layoutY="181.0" text="Tanggal Pemesanan" />
-      <TextField fx:id="tfNamaKeg" layoutX="416.0" layoutY="301.0" />
+      <TextField layoutX="416.0" layoutY="301.0" />
       <Label layoutX="217.0" layoutY="305.0" text="Nama Kegiatan" />
-      <Button layoutX="580.0" layoutY="134.0" mnemonicParsing="false" style="-fx-background-color: f7d217;" text="Cek Ruang" />
+      <Button layoutX="390.0" layoutY="429.0" mnemonicParsing="false" style="-fx-background-color: f7d217;" text="Cek Ruang" />
       <Label layoutX="450.0" layoutY="234.0" prefHeight="17.0" prefWidth="20.0" />
       <Label layoutX="432.0" layoutY="187.0" text="-" />
       <Pane layoutY="-2.0" prefHeight="601.0" prefWidth="136.0" style="-fx-background-color: #ECF1F2;">

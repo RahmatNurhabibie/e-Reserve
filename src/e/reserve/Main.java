@@ -37,7 +37,7 @@ public class Main extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/view/PemesananForm.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/view/PemesananList.fxml"));
         
         Scene scene = new Scene(root);
         stage.setResizable(false);

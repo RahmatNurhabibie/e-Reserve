@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<<<<<<< HEAD
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-=======
->>>>>>> a4e70387893e15139f55dd7624986f2b17b86870
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
@@ -81,6 +78,6 @@
       <ComboBox fx:id="cbJamAkhir" layoutX="509.0" layoutY="235.0" prefHeight="25.0" prefWidth="56.0" />
       <Label layoutX="537.0" layoutY="181.0" text="to" />
       <Label layoutX="491.0" layoutY="239.0" text="-" />
-      <ComboBox fx:id="cbRuangan" layoutX="416.0" layoutY="134.0" prefWidth="150.0" />
+      <ComboBox fx:id="cbRuangan" layoutX="416.0" layoutY="134.0" prefWidth="150.0" promptText="Silahkan pilih ruangan" />
    </children>
 </AnchorPane>

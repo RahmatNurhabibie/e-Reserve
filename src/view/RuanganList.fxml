@@ -17,8 +17,8 @@
           <TableColumn fx:id="ColNama" prefWidth="169.0" text="Nama" />
             <TableColumn fx:id="ColKategori" prefWidth="96.0" text="Kategori" />
             <TableColumn fx:id="ColHarga" prefWidth="133.0" text="Harga" />
-            <TableColumn fx:id="ColFasilitas" minWidth="2.0" prefWidth="179.0" text="Fasilitas" />
-            <TableColumn fx:id="colButton" prefWidth="128.0" text=" " />
+            <TableColumn fx:id="ColFasilitas" minWidth="2.0" prefWidth="111.0" text="Fasilitas" />
+            <TableColumn fx:id="ColTombol" prefWidth="196.0" text=" " />
         </columns>
       </TableView>
       <Pane layoutY="-2.0" prefHeight="601.0" prefWidth="136.0" style="-fx-background-color: #ECF1F2;">

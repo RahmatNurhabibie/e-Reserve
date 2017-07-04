@@ -20,9 +20,11 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.util.Callback;
 import model.LstPemesanan;
 import model.LstRuangan;
 import model.Pemesanan;
@@ -72,22 +74,22 @@ public class PemesananController implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        usernameSession.setText(Main.getSession().getUsername());
+        usernameSession.setText(Main.getSession() != null ? Main.getSession().getUsername() : "not logged in");
         // inisiasi Form
         ObservableList<Ruangan> listRuangan = FXCollections.observableArrayList();
         dbRuangan.get().forEach((r) -> {
             listRuangan.add(r);
         });
-        cbRuangan.setCellFactory(
-            lv -> new ListCell<Ruangan>() {
-                @Override
-                protected void updateItem(Ruangan item, boolean empty) {
-                    super.updateItem(item, empty);
-                    setText(empty ? "" : item.getNama());
-                }
-            }
-        );
         cbRuangan.setItems(listRuangan);
+        Callback<ListView<Ruangan>, ListCell<Ruangan>> factory = lv -> new ListCell<Ruangan>() {
+            @Override
+            protected void updateItem(Ruangan item, boolean empty) {
+                super.updateItem(item, empty);
+                setText(empty ? "" : item.getNama());
+            }
+        };
+        cbRuangan.setButtonCell(factory.call(null));
+        cbRuangan.setCellFactory(factory);
         
         ObservableList<String> listJam = FXCollections.observableArrayList();
         for(int i = 0; i <= 2; i++){
@@ -101,7 +103,7 @@ public class PemesananController implements Initializable {
         cbJamMulai.getSelectionModel().selectFirst();
         cbJamAkhir.getSelectionModel().selectFirst();
         if (selected != null) {
-            cbRuangan.getSelectionModel().select(selected);
+            cbRuangan.getSelectionModel().select(selected.getId()- 1);
         }
         
         // inisiasi PemesananList

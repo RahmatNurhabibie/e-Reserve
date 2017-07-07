@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #05AA75;" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UserController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #05AA75;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UserController">
    <children>
       <TableView fx:id="TVPengguna" layoutX="136.0" layoutY="67.0" prefHeight="534.0" prefWidth="664.0">
         <columns>
@@ -84,6 +84,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
+            <Button fx:id="btnPemesananList" contentDisplay="RIGHT" layoutY="68.0" mnemonicParsing="false" opacity="0.99" prefHeight="32.0" prefWidth="136.0" style="-fx-background-color: transparent;" text="BOOKING" textFill="WHITE" />
          </children>
       </Pane>
     </children>

@@ -9,6 +9,8 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -28,6 +30,26 @@ public class Main extends Application {
     
     private static Pengguna session;
     
+    public final static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
+    public final static String formatTanggal(LocalDateTime a){
+        String tgl = a.format(formatter);
+        
+        HashMap<String,String> bulan = new HashMap<>();
+        bulan.put("01", "Januari");
+        bulan.put("02", "Februari");
+        bulan.put("03", "Maret");
+        bulan.put("04", "April");
+        bulan.put("05", "Mei");
+        bulan.put("06", "Juni");
+        bulan.put("07", "Juli");
+        bulan.put("08", "Agustus");
+        bulan.put("09", "September");
+        bulan.put("10", "Oktober");
+        bulan.put("11", "November");
+        bulan.put("12", "Desember");
+        
+        return tgl.substring(0,2) + " " + bulan.get(tgl.substring(3, 5)) + " " + tgl.substring(6,10) + " pukul " + tgl.substring(11);
+    }
     public void setSession(Pengguna id){
         Main.session = id;
     }
@@ -37,7 +59,7 @@ public class Main extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/view/LoginPage.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/view/PemesananForm.fxml"));
         
         Scene scene = new Scene(root);
         stage.setResizable(false);
@@ -59,29 +81,6 @@ public class Main extends Application {
         LstRuangan dbRuangan = new LstRuangan();
         LstKomentar dbKomentar = new LstKomentar();
         LstPemesanan dbPemesanan = new LstPemesanan();
-        
-        dbPengguna.add(new Pengguna(1, "Saputro Andi", "Andi", "Siapaaja@gmail.com", "NGAWUR"));
-        dbPengguna.add(new Pengguna(2, "Nizom Sidiq", "Sidiq", "Siapaajalah@gmail.com", "NGAWUR"));
-        // isi Ruangan
-        dbRuangan.add(new Ruangan(dbRuangan.size() + 1, "Ruang Auditorium", "Auditorium", 10000, "AC, 30 kursi"));
-        dbRuangan.add(new Ruangan(dbRuangan.size() + 1, "Hall", "Hall", 10000, "Kosong"));
-        dbRuangan.add(new Ruangan(dbRuangan.size() + 1, "Laboratorium Terpadu FTI", "Laboratorium", 1500, "AC, 30 kursi, Komputer"));
-        // isi Pemesanan
-        dbPemesanan.add(
-                new Pemesanan(
-                    dbPemesanan.size() + 1, 
-                    dbPengguna.get(1), 
-                    dbRuangan.get(2),
-                    "Porsematif", "Angkatan16",
-                    LocalDate.now(),
-                    LocalDateTime.of(LocalDate.parse("2017-07-01"), LocalTime.now()),
-                    LocalDateTime.of(LocalDate.parse("2017-07-03"), LocalTime.parse("15:30"))     
-                ));
-
-        // isi Komentar
-        dbKomentar.add(new Komentar(dbKomentar.size() + 1, dbPengguna.get(1), dbRuangan.get(1), "Good 1", LocalDateTime.now() ));
-        dbKomentar.add(new Komentar(dbKomentar.size() + 1, dbPengguna.get(1), "Good 2", LocalDateTime.now() ));
-        dbKomentar.add(new Komentar(dbKomentar.size() + 1, dbPengguna.get(2), dbRuangan.get(2), "Good 3", LocalDateTime.now() ));
         
         launch(args);
     }
@@ -114,9 +113,13 @@ public class Main extends Application {
         Parent root;
         
         stage = (Stage) btn.getScene().getWindow();
+        System.out.println(c.getResource("/view/" + urlFXML + ".fxml"));
         root = FXMLLoader.load(c.getResource("/view/" + urlFXML + ".fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+        
+    // Date Time Formatter Day - Month - Year pukul : jam.menit
+    
     }
 }

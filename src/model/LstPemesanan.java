@@ -17,6 +17,10 @@ public class LstPemesanan {
     private static List<Pemesanan> TblPemesanan = new ArrayList<Pemesanan>();
     
     // Methods
+    public List<Pemesanan> get() {
+        List<Pemesanan> tmp = TblPemesanan;
+        return tmp;
+    }
     public void add(Pemesanan p){
         TblPemesanan.add(p);
     }

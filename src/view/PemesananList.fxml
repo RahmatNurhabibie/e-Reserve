@@ -10,26 +10,24 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.KelolaController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.KelolaController">
    <children>
-      <TableView fx:id="TVPemesanan" layoutX="136.0" layoutY="64.0" prefHeight="536.0" prefWidth="664.0">
+      <TableView fx:id="TVPemesanan" layoutX="135.0" layoutY="70.0" prefHeight="530.0" prefWidth="665.0">
          <columns>
             <TableColumn fx:id="TVColId" prefWidth="39.0" text="Id" />
-            <TableColumn fx:id="TVColNama" prefWidth="171.0" text="Nama" />
-            <TableColumn fx:id="TVColRuang" prefWidth="96.0" text="Ruang" />
-            <TableColumn fx:id="TVColTglMulai" prefWidth="170.0" text="Tanggal Mulai" />
-            <TableColumn fx:id="TVColTglSelesai" minWidth="0.0" prefWidth="187.0" text="Tanggal Selesai" />
+            <TableColumn fx:id="TVColInstitusi" prefWidth="116.0" text="Institusi" />
+            <TableColumn fx:id="TVColRuang" prefWidth="119.0" text="Ruang" />
+            <TableColumn fx:id="TVColKegiatan" prefWidth="120.0" text="Kegiatan" />
+            <TableColumn fx:id="TVColTglMulai" prefWidth="85.0" text="Mulai" />
+            <TableColumn fx:id="TVColTglSelesai" prefWidth="85.0" text="Akhir" />
+            <TableColumn fx:id="TVColAction" prefWidth="100.0" text="Action" />
          </columns>
       </TableView>
-      <Pane layoutY="2.0" prefHeight="601.0" prefWidth="800.0" style="-fx-background-color: #ECF1F2;">
-         <children>
-            <Pane layoutX="-40.0" layoutY="-2.0" prefHeight="68.0" prefWidth="841.0" style="-fx-background-color: #05AA75;" />
-         </children>
-      </Pane>
-      <Pane layoutY="1.0" prefHeight="602.0" prefWidth="136.0" style="-fx-background-color: #05AA75;">
+      <Pane prefHeight="70.0" prefWidth="800.0" style="-fx-background-color: #05AA75;" />
+      <Pane prefHeight="600.0" prefWidth="135.0" style="-fx-background-color: #05AA75;">
          <children>
             <Pane layoutX="-6.0" layoutY="333.0" prefHeight="51.0" prefWidth="10.0" style="-fx-background-color: #3A3B4A;" />
-            <Pane layoutY="-1.0" prefHeight="68.0" prefWidth="137.0" style="-fx-background-color: #3A3B4A;" />
+            <Pane layoutY="-1.0" prefHeight="70.0" prefWidth="135.0" style="-fx-background-color: #3A3B4A;" />
             <Pane layoutY="68.0" prefHeight="0.0" prefWidth="136.0" style="-fx-background-color: #151D25;" />
             <Label layoutX="52.0" layoutY="111.0" prefHeight="25.0" prefWidth="72.0" text="BOOKING" textFill="#ffffffe3">
                <font>

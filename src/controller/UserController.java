@@ -26,23 +26,15 @@ import model.Pengguna;
  *
  * @author Sptandi
  */
-public class UserController implements Initializable {
+public class UserController extends Controller implements Initializable {
     @FXML 
-    Label usernameSession;
+    private Label usernameSession;
     @FXML 
-    TableView TVPengguna;
+    private TableView TVPengguna;
     @FXML
-    TableColumn<Pengguna, String> TVColId, TVColNama, TVColUsername, TVColEmail, TVColJabatan, TVColAktif;
-    @FXML
-    Button btnLogOut;
+    private TableColumn<Pengguna, String> TVColId, TVColNama, TVColUsername, TVColEmail, TVColJabatan, TVColAktif;
     private final LstPengguna dbpengguna = new LstPengguna();
     
-    @FXML
-    private void logOutAction (ActionEvent event) throws IOException {
-        Main sess = new Main();
-        sess.setSession(null);
-        Main.RedirectPage(getClass(), btnLogOut, "LoginPage");
-    }
     
     
     @Override

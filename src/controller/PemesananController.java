@@ -24,6 +24,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Callback;
 import model.LstPemesanan;
 import model.LstRuangan;
@@ -33,29 +34,24 @@ import model.Ruangan;
  *
  * @author Sptandi
  */
-public class PemesananController implements Initializable {
+public class PemesananController extends Controller implements Initializable {
     private Ruangan selected; // Form
     private LstRuangan dbRuangan = new LstRuangan();
     private LstPemesanan dbPemesanan = new LstPemesanan();
     
-    @FXML Label usernameSession;
+    @FXML private Label usernameSession;
     
-    // List
-    @FXML TableView TVPemesanan;
-    
-    @FXML
-    TableColumn TVColId, TVColNama, TVColRuang, TVColTglMulai, TVColTglSelesai;
     
     // Form
     @FXML 
-    DatePicker dpWaktuMulai, dpWaktuAkhir;
+    private DatePicker dpWaktuMulai, dpWaktuAkhir;
     
     @FXML
-    ComboBox<String> cbJamMulai, cbJamAkhir;
-    @FXML ComboBox<Ruangan> cbRuangan;
+    private ComboBox<String> cbJamMulai, cbJamAkhir;
+    @FXML private ComboBox<Ruangan> cbRuangan;
     
     @FXML 
-    TextField tfNamaKeg, tfInstitusi;
+    private TextField tfNamaKeg, tfInstitusi;
     
     @FXML
     private void bookingAction (ActionEvent e) {
@@ -75,6 +71,8 @@ public class PemesananController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         usernameSession.setText(Main.getSession() != null ? Main.getSession().getUsername() : "not logged in");
+        
+
         // inisiasi Form
         ObservableList<Ruangan> listRuangan = FXCollections.observableArrayList();
         dbRuangan.get().forEach((r) -> {
@@ -107,7 +105,6 @@ public class PemesananController implements Initializable {
         }
         
         // inisiasi PemesananList
-        
         
     }
     

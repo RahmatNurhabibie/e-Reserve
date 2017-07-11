@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #05AA75;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UserController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #05AA75;" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UserController">
    <children>
       <TableView fx:id="TVPengguna" layoutX="136.0" layoutY="67.0" prefHeight="534.0" prefWidth="664.0">
         <columns>
@@ -85,6 +85,11 @@
                </font>
             </Button>
             <Button fx:id="btnPemesananList" contentDisplay="RIGHT" layoutY="68.0" mnemonicParsing="false" opacity="0.99" prefHeight="32.0" prefWidth="136.0" style="-fx-background-color: transparent;" text="BOOKING" textFill="WHITE" />
+            <Button fx:id="btnRuanganList" layoutX="14.0" layoutY="172.0" mnemonicParsing="false" onAction="#gotoRuanganList" opacity="0.0" prefHeight="32.0" prefWidth="107.0" text="Button" />
+            <Button fx:id="btnKomentarForm" layoutX="14.0" layoutY="235.0" mnemonicParsing="false" onAction="#gotoKomentarForm" opacity="0.0" prefHeight="32.0" prefWidth="107.0" text="Button" />
+            <Button fx:id="btnUserList" layoutX="16.0" layoutY="343.0" mnemonicParsing="false" onAction="#gotoUserList" opacity="0.0" prefHeight="32.0" prefWidth="107.0" text="Button" />
+            <Button fx:id="btnKomentarList" layoutX="14.0" layoutY="411.0" mnemonicParsing="false" onAction="#gotoKomentarList" opacity="0.0" prefHeight="32.0" prefWidth="107.0" text="Button" />
+            <Button fx:id="btnPemesananList" layoutX="15.0" layoutY="476.0" mnemonicParsing="false" onAction="#gotoPemesananList" opacity="0.0" prefHeight="32.0" prefWidth="107.0" text="Button" />
          </children>
       </Pane>
     </children>

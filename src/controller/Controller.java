@@ -20,13 +20,17 @@ import javafx.scene.image.ImageView;
 public class Controller {
     @FXML protected Button btnPemesananList;
     @FXML protected Button btnLogOut;
+    @FXML protected Button btnRuanganList;
+    @FXML protected Button btnKomentarForm;
+    @FXML protected Button btnKomentarList;
+    @FXML protected Button btnUserList;
     
     protected void SideBar(){
         btnPemesananList.setGraphic(new ImageView(new Image("/view/Icon/bookmark.png")));        
     }
     @FXML
     protected void gotoRuanganList(ActionEvent e) throws IOException{
-        Main.RedirectPage(getClass(), btnLogOut, "RuanganList");
+        Main.RedirectPage(getClass(), btnRuanganList, "RuanganList");
     }
     @FXML
     protected void gotoRuanganForm(ActionEvent e) throws IOException{
@@ -40,7 +44,7 @@ public class Controller {
     }
     @FXML
     protected void gotoPemesananList(ActionEvent e) throws IOException{
-        Main.RedirectPage(getClass(), btnLogOut, "PemesananList");
+        Main.RedirectPage(getClass(), btnPemesananList, "PemesananList");
     }
     @FXML
     protected void gotoPemesananForm(ActionEvent e) throws IOException{
@@ -48,15 +52,15 @@ public class Controller {
     }
     @FXML
     protected void gotoKomentarForm(ActionEvent e) throws IOException{
-        Main.RedirectPage(getClass(), btnLogOut, "KomentarForm");
+        Main.RedirectPage(getClass(), btnKomentarForm, "KomentarForm");
     }
     @FXML
     protected void gotoKomentarList(ActionEvent e) throws IOException{
-        Main.RedirectPage(getClass(), btnLogOut, "KomentarList");
+        Main.RedirectPage(getClass(), btnKomentarList, "KomentarList"); //masih error
     }
     @FXML
     protected void gotoUserList(ActionEvent e) throws IOException{
-        Main.RedirectPage(getClass(), btnLogOut, "UserList");
+        Main.RedirectPage(getClass(), btnUserList, "UserList"); //masih error
     }
     
 }

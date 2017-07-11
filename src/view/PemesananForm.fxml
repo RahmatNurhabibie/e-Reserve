@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PemesananController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PemesananController">
    <children>
       <Pane layoutY="1.0" prefHeight="601.0" prefWidth="800.0" style="-fx-background-color: #ECF1F2;">
          <children>
@@ -81,6 +81,11 @@
                </font>
             </Button>
             <Button fx:id="btnPemesananList" graphicTextGap="8.0" layoutX="-1.0" layoutY="68.0" mnemonicParsing="false" opacity="0.99" prefHeight="32.0" prefWidth="136.0" style="-fx-background-color: transparent;" text="BOOKING" textFill="WHITE" />
+            <Button fx:id="btnRuanganList" layoutX="13.0" layoutY="168.0" mnemonicParsing="false" onAction="#gotoRuanganList" opacity="0.0" prefHeight="32.0" prefWidth="107.0" text="Button" />
+            <Button fx:id="btnKomentarForm" layoutX="13.0" layoutY="238.0" mnemonicParsing="false" onAction="#gotoKomentarForm" opacity="0.0" prefHeight="32.0" prefWidth="107.0" text="Button" />
+            <Button fx:id="btnKomentarList" layoutX="16.0" layoutY="411.0" mnemonicParsing="false" onAction="#gotoKomentarList" opacity="0.0" prefHeight="32.0" prefWidth="107.0" text="Button" />
+            <Button fx:id="btnPemesananList" layoutX="15.0" layoutY="476.0" mnemonicParsing="false" onAction="#gotoPemesananList" opacity="0.0" prefHeight="32.0" prefWidth="107.0" text="Button" />
+            <Button fx:id="btnUserList" layoutX="21.0" layoutY="343.0" mnemonicParsing="false" onAction="#gotoUserList" opacity="0.0" prefHeight="32.0" prefWidth="107.0" text="Button" />
          </children>
       </Pane>
       <Button layoutX="537.0" layoutY="429.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="73.0" style="-fx-background-color: f7d217;" text="Booking" />

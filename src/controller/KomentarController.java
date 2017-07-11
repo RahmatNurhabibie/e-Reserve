@@ -26,6 +26,8 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.util.Callback;
 
@@ -41,6 +43,11 @@ public class KomentarController extends Controller implements Initializable {
 
     @FXML
     private Button btSubmit;
+    
+    @FXML
+    private TableView<Komentar> TableViewKomentar;
+    @FXML
+    private TableColumn ColNama, ColRuangan, ColIsi;
     
     @FXML
     private Label lbNotif; 

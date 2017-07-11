@@ -12,13 +12,6 @@
 
 <AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.KelolaController">
    <children>
-      <TableView layoutX="136.0" layoutY="66.0" prefHeight="538.0" prefWidth="665.0">
-        <columns>
-          <TableColumn prefWidth="106.0" text="Nama" />
-          <TableColumn prefWidth="127.0" text="Ruang" />
-            <TableColumn prefWidth="144.0" text="Tanggal" />
-        </columns>
-      </TableView>
       <Pane layoutY="1.0" prefHeight="601.0" prefWidth="800.0" style="-fx-background-color: #ECF1F2;">
          <children>
             <Pane layoutX="-40.0" layoutY="-2.0" prefHeight="68.0" prefWidth="841.0" style="-fx-background-color: #05AA75;" />
@@ -93,5 +86,13 @@
             <Button fx:id="btnPemesananList" layoutX="18.0" layoutY="476.0" mnemonicParsing="false" onAction="#gotoPemesananList" opacity="0.0" prefHeight="32.0" prefWidth="107.0" text="Button" />
          </children>
       </Pane>
+      <TableView layoutX="136.0" layoutY="66.0" prefHeight="538.0" prefWidth="665.0">
+        <columns>
+          <TableColumn id="ColNama" fx:id="ColNama" prefWidth="106.0" text="Nama" />
+          <TableColumn fx:id="ColRuangan" prefWidth="127.0" text="Ruang" />
+            <TableColumn fx:id="ColIsi" prefWidth="144.0" text="Isi" />
+            <TableColumn prefWidth="75.0" text="Action" />
+        </columns>
+      </TableView>
    </children>
 </AnchorPane>

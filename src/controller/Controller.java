@@ -24,6 +24,8 @@ public class Controller {
     @FXML protected Button btnKomentarForm;
     @FXML protected Button btnKomentarList;
     @FXML protected Button btnUserList;
+    @FXML protected Button btnPemesananForm;
+    @FXML protected Button btnRuanganForm;
     
     protected void SideBar(){
         btnPemesananList.setGraphic(new ImageView(new Image("/view/Icon/bookmark.png")));        
@@ -34,7 +36,7 @@ public class Controller {
     }
     @FXML
     protected void gotoRuanganForm(ActionEvent e) throws IOException{
-        Main.RedirectPage(getClass(), btnLogOut, "RuanganForm");
+        Main.RedirectPage(getClass(), btnRuanganForm, "RuanganForm");
     }
     @FXML
     protected void logOutAction(ActionEvent e) throws IOException{
@@ -48,7 +50,7 @@ public class Controller {
     }
     @FXML
     protected void gotoPemesananForm(ActionEvent e) throws IOException{
-        Main.RedirectPage(getClass(), btnLogOut, "PemesananForm");
+        Main.RedirectPage(getClass(), btnPemesananForm, "PemesananForm");
     }
     @FXML
     protected void gotoKomentarForm(ActionEvent e) throws IOException{

@@ -5,12 +5,14 @@
  */
 package controller;
 
-import e.reserve.db;
+import e.reserve.Main;
+import e.reserve.XMLController;
+import model.LstPengguna;
 import java.io.IOException;
 import java.net.URL;
-import java.util.NoSuchElementException;
 import java.util.ResourceBundle;
-import java.util.function.Predicate;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javafx.event.ActionEvent;
@@ -21,6 +23,8 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerException;
 import model.*;
 
 /**
@@ -36,33 +40,53 @@ public class AuthController implements Initializable {
     private TextField tfName, tfEmail, tfPassword2; // RegisterForm only
     @FXML 
     private Text txPeringatan;
-    @FXML 
-    private Button btLogin;
+    @FXML
+    private Button btnRegister, btnToRegister, btnLogin, btnKembali;
     
+    private LstPengguna dbPengguna = new LstPengguna();
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        /* contoh jika sudah ada data */
-//        Pengguna tmp = new Pengguna(db.TblPengguna.size() + 1, "nizom", "nijom", "nijomx@gmail.com", "123456");
-//        db.TblPengguna.add(tmp);
+
     }
     
     @FXML
-    private void handleButtonSubmit (ActionEvent event) throws IOException {
-        /* Mencoba LoginForm */
-//        String a;
-//        String b;
-//        String password = "123456";
-//        String username = "16523189"; 
-//        a = tfUsername.getText();
-//        b = tfPassword.getText();
-//        
-//        if (orang.getUsername(a) == username && orang.getPassword(b) == password) {
-//             FXMLLoader.load(getClass().getResource("/view/UserList.fxml"));
-//        }
+    private void loginAction (ActionEvent event) throws IOException {
+        String username = tfUsername.getText().trim(); 
+        String password = tfPassword.getText().trim();
+        System.out.println(username);
+        if (dbPengguna.isExist(username) != null) {
+            Pengguna tmp = dbPengguna.isExist(username);
+            if (Main.MD5(password).equals(tmp.getPassword())) {
+                System.out.println("Success Login");
+                Main m = new Main();
+                m.setSession(tmp);
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setContentText("Welcome to e-Reserve");
+                alert.showAndWait();
+                
+                if (tmp.getJabatan() == 1) // admin
+                    Main.RedirectPage(getClass(), btnLogin, "UserList");
+                if (tmp.getJabatan() == 2) // user
+                    Main.RedirectPage(getClass(), btnLogin, "RuanganList");
+            } else {
+                txPeringatan.setText("Wrong Password");
+            }
+        } else {
+            txPeringatan.setText("Account has not registered");
+        }
+    }
+    @FXML
+    private void toRegisterAction (ActionEvent event) throws IOException {
+        Main.RedirectPage(getClass(), btnToRegister, "RegisterForm");
     }
     
     @FXML
-    private void registerAction(ActionEvent e){
+    private void kembaliLogin() throws IOException {
+        Main.RedirectPage(getClass(), btnKembali, "LoginPage");
+    }
+    
+    @FXML
+    private void registerAction(ActionEvent e) throws IOException{             
         String nama = tfName.getText();
         String user = tfUsername.getText();
         String email = tfEmail.getText();
@@ -82,19 +106,28 @@ public class AuthController implements Initializable {
             txPeringatan.setText("Username must be at least 4 character\n"
                                 + "any symbol is not allowed");
             clearPassword(); tfUsername.clear();
-        } else if (getPengguna(user) != null) { // Unique Username "username is not available"
+        } else if (dbPengguna.isExist(user) != null) {
             txPeringatan.setText("username is not available");
             clearPassword(); tfUsername.clear();
         } else {
-            db.TblPengguna.add(new Pengguna(db.TblPengguna.size() + 1,nama, user, email, pass));
+            dbPengguna.add(new Pengguna(dbPengguna.size() + 1,nama, user, email, Main.MD5(pass)));
+            try {
+                XMLController xml = new XMLController();
+                xml.savePengguna();
+            } catch (ParserConfigurationException ex) {
+                Logger.getLogger(AuthController.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (TransformerException ex) {
+                Logger.getLogger(AuthController.class.getName()).log(Level.SEVERE, null, ex);
+            }
             Alert alert = new Alert(AlertType.INFORMATION);
             alert.setTitle("Succes");
             alert.setContentText("You have been registered");
-
             alert.showAndWait();
+            
+            Main.RedirectPage(getClass(), btnRegister, "LoginPage");
         }
     }
-    
+     
     // clear password
     private void clearPassword(){
         tfPassword.clear();
@@ -110,15 +143,5 @@ public class AuthController implements Initializable {
     private boolean usernameValidate(String usernameStr){
         Matcher matcher = Pattern.compile("[^A-Za-z0-9]").matcher(usernameStr);
         return matcher.find(); // true if has special character
-    }
-    //username unique validator
-    private Pengguna getPengguna(String user) {
-        try {
-            Predicate<Pengguna> predicate = c -> c.getUsername().equals(user);
-            Pengguna  obj = db.TblPengguna.stream().filter(predicate).findFirst().get();
-            return obj;
-        } catch (NoSuchElementException s) {
-            return null;
-        }
     }
 }

@@ -1,16 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.KelolaController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.KelolaController">
    <children>
-      <Label layoutX="73.0" layoutY="190.0" text="Nama" />
-      <Label layoutX="155.0" layoutY="190.0" text="Ruang" />
-      <Label layoutX="256.0" layoutY="190.0" text="Tanggal Mulai" />
-      <Label layoutX="356.0" layoutY="190.0" text="Tanggal Selesai" />
-      <Label layoutX="450.0" layoutY="43.0" />
-      <Pane prefHeight="65.0" prefWidth="800.0" style="-fx-background-color: #06337b;" />
+      <TableView fx:id="TVPemesanan" layoutX="135.0" layoutY="70.0" prefHeight="530.0" prefWidth="665.0">
+         <columns>
+            <TableColumn fx:id="TVColId" prefWidth="39.0" text="Id" />
+            <TableColumn fx:id="TVColInstitusi" prefWidth="116.0" text="Institusi" />
+            <TableColumn fx:id="TVColRuang" prefWidth="119.0" text="Ruang" />
+            <TableColumn fx:id="TVColKegiatan" prefWidth="120.0" text="Kegiatan" />
+            <TableColumn fx:id="TVColTglMulai" prefWidth="85.0" text="Mulai" />
+            <TableColumn fx:id="TVColTglSelesai" prefWidth="85.0" text="Akhir" />
+            <TableColumn fx:id="TVColAction" prefWidth="100.0" text="Action" />
+         </columns>
+      </TableView>
+      <Pane prefHeight="70.0" prefWidth="800.0" style="-fx-background-color: #05AA75;" />
+      <Pane prefHeight="600.0" prefWidth="135.0" style="-fx-background-color: #05AA75;">
+         <children>
+            <Pane layoutY="-1.0" prefHeight="70.0" prefWidth="135.0" style="-fx-background-color: #3A3B4A;" />
+            <Pane layoutY="68.0" prefHeight="0.0" prefWidth="136.0" style="-fx-background-color: #151D25;" />
+            <Label fx:id="lbSession" layoutX="46.0" layoutY="14.0" text="Login as" textFill="#e3e4ec" />
+            <Label fx:id="usernameSession" layoutX="51.0" layoutY="37.0" text="Nijom" textFill="#e3e4ec" />
+            <Button fx:id="btnLogOut" defaultButton="true" layoutX="21.0" layoutY="545.0" mnemonicParsing="false" onAction="#logOutAction" opacity="0.99" prefHeight="32.0" prefWidth="96.0" style="-fx-background-color: #FFFFFF;" text="LOG OUT" textFill="#05aa75">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnPesan" defaultButton="true" graphicTextGap="10.0" layoutX="5.0" layoutY="117.0" mnemonicParsing="false" onAction="#gotoPemesananForm" opacity="0.99" prefHeight="32.0" prefWidth="125.0" style="-fx-background-color: #05aa75;" text="PESAN" textFill="WHITE" />
+            <Button fx:id="btnRuangan" defaultButton="true" graphicTextGap="10.0" layoutX="5.0" layoutY="161.0" mnemonicParsing="false" onAction="#gotoRuanganList" opacity="0.99" prefHeight="32.0" prefWidth="125.0" style="-fx-background-color: #05aa75;" text="RUANGAN" textFill="WHITE" />
+            <Button fx:id="btnKritikSaran" defaultButton="true" graphicTextGap="10.0" layoutX="5.0" layoutY="207.0" mnemonicParsing="false" onAction="#gotoKomentarForm" opacity="0.99" prefHeight="32.0" prefWidth="125.0" style="-fx-background-color: #05aa75;" text="KRITIK DAN SARAN" textFill="WHITE" />
+               <Button fx:id="btnUserList" defaultButton="true" graphicTextGap="10.0" layoutX="5.0" layoutY="251.0" mnemonicParsing="false" onAction="#gotoUserList" opacity="0.99" prefHeight="32.0" prefWidth="125.0" style="-fx-background-color: #05aa75;" text="LIST USER" textFill="WHITE">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

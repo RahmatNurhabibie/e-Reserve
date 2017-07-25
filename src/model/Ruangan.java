@@ -5,8 +5,7 @@
  */
 package model;
 
-import java.util.ArrayList;
-import java.util.List;
+
 
 /**
  *
@@ -16,19 +15,33 @@ public class Ruangan {
     /* attributes */
     private int id;
     private String nama;
-    private int kategori;
+    private String kategori;
     private int harga;
     private String fasilitas;
-    
-    
-    List <Ruangan> ruang = new ArrayList();
-    
-    
-    
-    /* constructor */
-    public Ruangan(int id,String nama,int kategori,int harga,String fasilitas){
         
+    /* constructor */
+    public Ruangan(int id,String nama,String kategori,int harga,String fasilitas){
+        this.id = id;
+        this.nama = nama;
+        this.kategori = kategori;
+        this.harga = harga;
+        this.fasilitas = fasilitas;
     }
     
     /* methods */
+    public int getId(){
+        return this.id;
+    }
+    public String getNama(){
+        return this.nama;
+    }
+    public String getKategori(){
+        return this.kategori;
+    }
+    public int getHarga(){
+        return this.harga;
+    }
+    public String getFasilitas(){
+        return this.fasilitas;
+    }
 }

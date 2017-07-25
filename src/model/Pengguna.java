@@ -27,7 +27,7 @@ public class Pengguna {
         this.email = email;
         this.username = username;
         this.password = password;
-        this.jabatan = 1;
+        this.jabatan = 2;
         this.is_aktif = true;
     }
     

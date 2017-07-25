@@ -5,8 +5,7 @@
  */
 package model;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.time.LocalDateTime;
 
 /**
  *
@@ -19,19 +18,36 @@ public class Komentar {
     private Ruangan id_ruangan;
     // private Komentar id_parent; --ga usah pake parent aja mungkin--
     private String isi;
-    private int tgl; // ubah type data "date"
+    private LocalDateTime tgl; // ubah type data "date"
     
     /* constructor */
-    public Komentar(String isi, int tgl){
+    public Komentar(int id, Pengguna pengguna, Ruangan ruangan, String isi, LocalDateTime tgl){
+        this.id = id;
+        this.id_pengguna = pengguna;
+        this.id_ruangan = ruangan;
         this.isi = isi;
         this.tgl = tgl;
     }
+    public Komentar(int id, Pengguna pengguna, String isi, LocalDateTime tgl){
+        this(id, pengguna, null, isi, tgl);
+    }
     
     
-    /* methods */
-    
-    public String getKomentar () {
+    /* methods */    
+    public int getId () {
+       return this.id;
+    }
+    public Pengguna getPengguna() {
+        return this.id_pengguna;
+    }
+    public Ruangan getRuangan() {
+       return this.id_ruangan;
+    }
+    public String getIsi () {
        return this.isi;
+    }
+    public LocalDateTime getDate () {
+       return this.tgl;
     }
     
 }

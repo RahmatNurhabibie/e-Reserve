@@ -1,15 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RuanganController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #05AA75;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RuanganController">
    <children>
-      <Label layoutX="42.0" layoutY="72.0" text="Nama" />
-      <Label layoutX="111.0" layoutY="72.0" text="Kategori" />
-      <Label layoutX="174.0" layoutY="72.0" text="Harga" />
-      <Label layoutX="272.0" layoutY="72.0" text="Label" />
-      <Pane prefHeight="65.0" prefWidth="800.0" style="-fx-background-color: #06337b;" />
+      <TableView fx:id="TableViewKomentar" layoutX="136.0" layoutY="62.0" prefHeight="538.0" prefWidth="666.0">
+        <columns>
+          <TableColumn fx:id="ColId" prefWidth="35.0" style="text-align: center;" text="Id" />
+          <TableColumn fx:id="ColNama" prefWidth="169.0" text="Nama" />
+            <TableColumn fx:id="ColKategori" prefWidth="96.0" text="Kategori" />
+            <TableColumn fx:id="ColHarga" prefWidth="133.0" text="Harga" />
+            <TableColumn fx:id="ColFasilitas" minWidth="2.0" prefWidth="111.0" text="Fasilitas" />
+            <TableColumn fx:id="ColAction" prefWidth="121.0" text="Pesan" />
+        </columns>
+      </TableView>
+      <Pane prefHeight="601.0" prefWidth="136.0" style="-fx-background-color: #05AA75;">
+         <children>
+            <Pane layoutY="-3.0" prefHeight="68.0" prefWidth="137.0" style="-fx-background-color: #3A3B4A;" />
+            <Pane layoutY="68.0" prefHeight="0.0" prefWidth="136.0" style="-fx-background-color: #151D25;" />
+            <Label fx:id="lbSession" layoutX="46.0" layoutY="14.0" text="Login as" textFill="#e3e4ec" />
+            <Label fx:id="usernameSession" layoutX="51.0" layoutY="37.0" text="Nijom" textFill="#e3e4ec" />
+            <Button fx:id="btnLogOut" defaultButton="true" layoutX="21.0" layoutY="545.0" mnemonicParsing="false" onAction="#logOutAction" opacity="0.99" prefHeight="32.0" prefWidth="96.0" style="-fx-background-color: #FFFFFF;" text="LOG OUT" textFill="#05aa75">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnPesan" defaultButton="true" graphicTextGap="10.0" layoutX="5.0" layoutY="117.0" mnemonicParsing="false" onAction="#gotoPemesananForm" opacity="0.99" prefHeight="32.0" prefWidth="125.0" style="-fx-background-color: #05aa75;" text="PESAN" textFill="WHITE" />
+            <Button fx:id="btnRuangan" defaultButton="true" graphicTextGap="10.0" layoutX="5.0" layoutY="161.0" mnemonicParsing="false" onAction="#gotoRuanganList" opacity="0.99" prefHeight="32.0" prefWidth="125.0" style="-fx-background-color: #05aa75;" text="RUANGAN" textFill="WHITE" />
+            <Button fx:id="btnKritikSaran" defaultButton="true" graphicTextGap="10.0" layoutX="5.0" layoutY="207.0" mnemonicParsing="false" onAction="#gotoKomentarForm" opacity="0.99" prefHeight="32.0" prefWidth="125.0" style="-fx-background-color: #05aa75;" text="KRITIK DAN SARAN" textFill="WHITE" />
+               <Button fx:id="btnUserList" defaultButton="true" graphicTextGap="10.0" layoutX="5.0" layoutY="251.0" mnemonicParsing="false" onAction="#gotoUserList" opacity="0.99" prefHeight="32.0" prefWidth="125.0" style="-fx-background-color: #05aa75;" text="LIST USER" textFill="WHITE">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+      <Button fx:id="btnTmbh" layoutX="679.0" layoutY="22.0" mnemonicParsing="false" onAction="#gotoRuanganForm" text="Tambah Ruang" />
    </children>
 </AnchorPane>
